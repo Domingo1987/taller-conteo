@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taller de conteo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF1F6; --grid:#DAE2EC; --ink:#17264D; --muted:#56668A; --line:#B8C4D6;
+  --surface:#FFFFFF; --surface2:#F6F8FB; --slot:#FFE066; --slot-edge:#E0B400; --slot-ink:#17264D;
+  --ok:#1D7447; --ok-bg:#E1F2E8; --bad:#AE2733; --bad-bg:#FBE6E8; --accent:#2747C9; --accent-ink:#fff;
+  --display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1A33; --grid:#18264A; --ink:#E7ECF7; --muted:#9DACC8; --line:#2E3E64;
+    --surface:#16223F; --surface2:#1B2A4C; --slot:#FFD84D; --slot-edge:#FFE38A; --slot-ink:#17264D;
+    --ok:#62D39C; --ok-bg:#123527; --bad:#FF8791; --bad-bg:#3B1A23; --accent:#8EA6FF; --accent-ink:#0F1A33;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1A33; --grid:#18264A; --ink:#E7ECF7; --muted:#9DACC8; --line:#2E3E64;
+  --surface:#16223F; --surface2:#1B2A4C; --slot:#FFD84D; --slot-edge:#FFE38A; --slot-ink:#17264D;
+  --ok:#62D39C; --ok-bg:#123527; --bad:#FF8791; --bad-bg:#3B1A23; --accent:#8EA6FF; --accent-ink:#0F1A33;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.5;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg,var(--grid) 1px, transparent 1px);
+  background-size:24px 24px;
+}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+h1,h2,h3{font-family:var(--display); margin:0; line-height:1.15}
+
+header.top{
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  padding:18px clamp(16px,4vw,40px); border-bottom:2px solid var(--ink); background:var(--paper);
+}
+header.top h1{font-size:clamp(1.5rem,3vw,2rem); font-weight:800; letter-spacing:-.01em}
+header.top .set{color:var(--muted); font-size:.95rem}
+.progress{margin-left:auto; display:flex; align-items:center; gap:10px; font-size:.95rem}
+.bar{width:120px; height:10px; border:2px solid var(--ink); border-radius:6px; overflow:hidden; background:var(--surface)}
+.bar i{display:block; height:100%; background:var(--ok); width:0; transition:width .4s}
+.btn{border:2px solid var(--ink); background:var(--surface); border-radius:8px; padding:7px 14px; font-weight:700}
+.btn:hover{background:var(--surface2)}
+.btn.primary{background:var(--ink); color:var(--paper)}
+.btn.primary:hover{opacity:.9}
+.btn.small{padding:4px 10px; font-size:.9rem; border-width:1.5px}
+.btn.ghost{border-color:transparent; background:transparent; color:var(--muted)}
+.btn.ghost:hover{color:var(--ink); background:var(--surface2)}
+
+.layout{display:grid; grid-template-columns:250px minmax(0,1fr); gap:28px; padding:24px clamp(16px,4vw,40px) 140px; max-width:1280px; margin:0 auto}
+nav.exlist{position:sticky; top:calc(16px + env(safe-area-inset-top,0px)); align-self:start}
+nav.exlist ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px}
+.exbtn{width:100%; text-align:left; border:2px solid transparent; background:transparent; border-radius:10px; padding:8px 10px; display:grid; grid-template-columns:auto 1fr; gap:2px 10px; align-items:center}
+.exbtn:hover{background:var(--surface)}
+.exbtn[aria-current="true"]{border-color:var(--ink); background:var(--surface)}
+.exbtn .num{grid-row:span 2; font-family:var(--display); font-weight:800; font-size:1.35rem; width:2.1ch; text-align:center}
+.exbtn .t{font-weight:700; font-size:.95rem; line-height:1.2}
+.dots{display:flex; gap:4px}
+.dots span{width:9px; height:9px; border-radius:50%; border:1.5px solid var(--muted)}
+.dots span.done{background:var(--ok); border-color:var(--ok)}
+.dots span.tried{border-color:var(--bad)}
+
+.statement{background:var(--surface); border:2px solid var(--ink); border-radius:14px; padding:22px clamp(16px,3vw,28px)}
+.statement .where{color:var(--muted); font-size:.95rem}
+.statement h2{font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:800; margin:2px 0 10px}
+.statement .context{max-width:68ch; margin:0 0 16px}
+.itemtabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px}
+.itemtab{min-width:44px; height:40px; border:2px solid var(--line); border-radius:8px; background:var(--surface); font-family:var(--display); font-weight:700; font-size:1.05rem; position:relative}
+.itemtab[aria-selected="true"]{border-color:var(--ink); background:var(--ink); color:var(--paper)}
+.itemtab.done::after{content:"✓"; position:absolute; top:-9px; right:-7px; width:18px; height:18px; border-radius:50%; background:var(--ok); color:#fff; font-size:.7rem; display:grid; place-items:center; font-family:var(--body)}
+.question{font-size:clamp(1.1rem,2vw,1.3rem); font-weight:700; max-width:62ch; margin:0}
+
+.bench{margin-top:26px}
+.bench-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px}
+.bench-head h3{font-size:1.2rem}
+.bench-head p{margin:0; color:var(--muted); font-size:.95rem}
+.palette{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; margin-bottom:18px}
+.tool{border:2px dashed var(--line); background:var(--surface); border-radius:10px; padding:10px 12px; text-align:left; display:flex; flex-direction:column; gap:2px}
+.tool:hover{border-style:solid; border-color:var(--ink)}
+.tool .g{font-family:var(--display); font-weight:800; font-size:1.15rem}
+.tool .n{font-weight:700; font-size:.92rem; line-height:1.2}
+.tool .d{color:var(--muted); font-size:.8rem; line-height:1.25}
+.tool.suggested{border-color:var(--accent); border-style:solid}
+
+.cards{display:flex; flex-direction:column; gap:14px}
+.empty{border:2px dashed var(--line); border-radius:12px; padding:26px; text-align:center; color:var(--muted); background:color-mix(in srgb,var(--surface) 70%, transparent)}
+.card{background:var(--surface); border:2px solid var(--ink); border-radius:10px; overflow:hidden}
+.card-head{display:flex; align-items:center; gap:10px; padding:8px 12px; border-bottom:1.5px solid var(--line); background:var(--surface2); flex-wrap:wrap}
+.tag{font-family:var(--display); font-weight:800; background:var(--ink); color:var(--paper); border-radius:6px; padding:1px 8px; font-size:.95rem}
+.card-head .name{font-weight:700}
+.card-head .val{margin-left:auto; font-family:var(--display); font-weight:800; font-size:1.25rem; font-variant-numeric:tabular-nums}
+.card-head .val.err{color:var(--bad); font-family:var(--body); font-weight:400; font-size:.9rem}
+.card-body{padding:14px}
+.field{display:inline-flex; flex-direction:column; gap:2px; margin-right:14px; margin-bottom:8px}
+.field label{font-size:.85rem; color:var(--muted)}
+.field input{width:5.5em; border:2px solid var(--line); border-radius:8px; padding:6px 8px; background:var(--surface); font-weight:700}
+.field input.wide{width:14em; text-transform:uppercase; letter-spacing:.08em}
+.field input:focus{border-color:var(--ink)}
+.viz{margin-top:6px}
+.formula{font-family:var(--display); font-size:1.15rem; font-weight:700; display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-variant-numeric:tabular-nums}
+.note{color:var(--muted); font-size:.9rem; margin:6px 0 0}
+
+/* Slots: the signature element */
+.slots{display:flex; flex-wrap:wrap; align-items:flex-start; gap:6px; padding:4px 0}
+.slot{display:flex; flex-direction:column; align-items:center; gap:4px}
+.slot input.box, .slot .box{
+  width:64px; height:64px; text-align:center; font-family:var(--display); font-weight:800; font-size:1.7rem;
+  background:var(--slot); color:var(--slot-ink); border:2.5px solid var(--slot-edge); border-radius:8px;
+  box-shadow:3px 3px 0 var(--ink); display:grid; place-items:center; font-variant-numeric:tabular-nums;
+}
+.slot .box.ro{box-shadow:none; border-style:dashed}
+.slot input.box:focus{outline:3px solid var(--accent); outline-offset:2px}
+.slot input.lbl{width:64px; border:none; border-bottom:1.5px solid var(--line); background:transparent; text-align:center; font-size:.78rem; color:var(--muted); padding:1px}
+.slot .lbl{font-size:.78rem; color:var(--muted)}
+.times{font-family:var(--display); font-weight:800; font-size:1.5rem; align-self:center; margin-top:-22px; color:var(--muted)}
+.slot-actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
+.slot-actions .fill{display:inline-flex; align-items:center; gap:6px; font-size:.9rem; color:var(--muted)}
+.slot-actions .fill input{width:4em; border:1.5px solid var(--line); border-radius:6px; padding:3px 6px; background:var(--surface)}
+
+.tiles{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0}
+.tilegroup{display:flex; gap:3px; padding:4px; border-radius:8px; border:1.5px solid var(--line)}
+.tilegroup.rep{border-color:var(--slot-edge); background:color-mix(in srgb,var(--slot) 22%, transparent)}
+.tile{width:30px; height:34px; display:grid; place-items:center; font-family:var(--display); font-weight:800; background:var(--surface); border:1.5px solid var(--ink); border-radius:5px}
+.tilegroup .cnt{font-size:.8rem; color:var(--muted); align-self:end; margin-left:3px}
+
+.frac{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle}
+.frac > span:first-child{border-bottom:2px solid currentColor; padding:0 4px}
+.frac > span:last-child{padding:0 4px}
+.binom{display:inline-flex; align-items:center; font-size:1.2rem}
+.binom .p{font-size:2.4rem; font-weight:400; line-height:1; transform:scaleY(1.2)}
+.binom .s{display:inline-flex; flex-direction:column; align-items:center; line-height:1.1; font-size:1rem}
+
+.units{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:6px 0}
+.unit{min-width:34px; height:34px; border-radius:50%; border:2px solid var(--ink); display:grid; place-items:center; font-weight:700; background:var(--surface)}
+.blockunit{display:flex; gap:3px; padding:3px 6px; border:2.5px solid var(--ink); border-radius:8px; background:var(--slot)}
+.blockunit .unit{background:var(--surface); color:var(--slot-ink); border-color:var(--slot-ink)}
+.check{display:inline-flex; align-items:center; gap:6px; font-size:.92rem}
+
+.expr{min-height:52px; border:2px solid var(--line); border-radius:8px; padding:8px 10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; background:var(--surface2)}
+.expr .tok{font-family:var(--display); font-weight:800; font-size:1.1rem}
+.expr .tok.ref{background:var(--ink); color:var(--paper); border-radius:6px; padding:0 7px}
+.expr .ph{color:var(--muted); font-size:.92rem}
+.keypad{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.key{min-width:40px; height:38px; border:2px solid var(--ink); background:var(--surface); border-radius:7px; font-family:var(--display); font-weight:800; font-size:1rem; padding:0 8px}
+.key.ref{background:var(--ink); color:var(--paper)}
+.key.ref small{font-family:var(--body); font-weight:400; opacity:.8; margin-left:4px}
+.key:hover{filter:brightness(1.1)}
+.numkey{display:inline-flex; gap:4px}
+.numkey input{width:5em; border:2px solid var(--line); border-radius:7px; padding:4px 8px; background:var(--surface)}
+
+/* Answer bar */
+.answerbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:5;
+  background:var(--surface); border-top:2px solid var(--ink);
+  padding:12px clamp(16px,4vw,40px); padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));
+}
+.answer-inner{max-width:1280px; margin:0 auto; display:flex; flex-direction:column; gap:10px}
+.answer-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.answer-row label{font-family:var(--display); font-weight:800; font-size:1.1rem}
+.answer-row input{flex:1 1 180px; max-width:260px; border:2.5px solid var(--ink); border-radius:8px; padding:8px 12px; font-family:var(--display); font-weight:800; font-size:1.3rem; background:var(--surface); font-variant-numeric:tabular-nums}
+.answer-row .spacer{flex:1}
+.feedback{border-radius:10px; padding:10px 14px; font-size:.98rem; display:none; max-width:900px}
+.feedback.show{display:block}
+.feedback.ok{background:var(--ok-bg); border:2px solid var(--ok)}
+.feedback.bad{background:var(--bad-bg); border:2px solid var(--bad)}
+.feedback.hint{background:var(--surface2); border:2px dashed var(--line)}
+.feedback strong{display:block; font-family:var(--display); font-size:1.05rem}
+.feedback p{margin:4px 0 0}
+@media (prefers-reduced-motion: no-preference){
+  .feedback.bad.show{animation:nudge .35s}
+  .card.new{animation:drop .3s ease-out}
+}
+@keyframes nudge{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes drop{from{transform:translateY(-8px); opacity:0}to{transform:none; opacity:1}}
+
+/* Loader dialog */
+dialog{border:2px solid var(--ink); border-radius:14px; background:var(--surface); color:var(--ink); max-width:min(760px,94vw); width:100%; padding:0}
+dialog::backdrop{background:rgba(10,20,45,.55)}
+.dlg{padding:22px; display:flex; flex-direction:column; gap:12px}
+.dlg h2{font-size:1.4rem}
+.dlg p{margin:0; max-width:70ch}
+.dlg textarea{width:100%; min-height:260px; border:2px solid var(--line); border-radius:8px; padding:10px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.82rem; background:var(--surface2); resize:vertical}
+.dlg .row{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.dlg .err{color:var(--bad); font-weight:700; white-space:pre-line}
+.dlg code{background:var(--surface2); padding:0 4px; border-radius:4px}
+.dlg details{font-size:.92rem}
+.dlg summary{cursor:pointer; font-weight:700}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr; gap:16px}
+  nav.exlist{position:static}
+  nav.exlist ol{flex-direction:row; overflow-x:auto; padding-bottom:4px}
+  .exbtn{min-width:190px}
+  .progress{margin-left:0; width:100%}
+  .slot input.box, .slot .box{width:54px; height:54px; font-size:1.4rem}
+  .slot input.lbl{width:54px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Taller de conteo</h1>
+    <div class="set" id="setTitle"></div>
+  </div>
+  <div class="progress">
+    <span id="progText"></span>
+    <div class="bar" aria-hidden="true"><i id="progBar"></i></div>
+    <button class="btn" id="openLoader">Cargar ejercicios</button>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="exlist" aria-label="Ejercicios"><ol id="exList"></ol></nav>
+  <main>
+    <section class="statement" id="statement"></section>
+    <section class="bench">
+      <div class="bench-head">
+        <h3>Mesa de trabajo</h3>
+        <p>Agregá herramientas, completá los números y combiná resultados. Cada herramienta queda con un nombre (R1, R2…) para usarla después.</p>
+      </div>
+      <div class="palette" id="palette"></div>
+      <div class="cards" id="cards"></div>
+    </section>
+  </main>
+</div>
+
+<div class="answerbar">
+  <div class="answer-inner">
+    <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+    <div class="answer-row">
+      <label for="answer">Respuesta</label>
+      <input id="answer" inputmode="numeric" autocomplete="off" placeholder="Escribí un número">
+      <button class="btn primary" id="checkBtn">Comprobar</button>
+      <button class="btn" id="hintBtn">Pedir pista</button>
+      <span class="spacer"></span>
+      <button class="btn ghost" id="prevBtn">Anterior</button>
+      <button class="btn" id="nextBtn">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<dialog id="loader">
+  <div class="dlg">
+    <h2>Cargar ejercicios desde JSON</h2>
+    <p>Pegá el JSON o elegí un archivo. El ejemplo de abajo tiene la estructura esperada: podés copiarlo, editarlo y volver a cargarlo.</p>
+    <details>
+      <summary>Estructura del JSON</summary>
+      <p><code>titulo</code> (texto) y <code>ejercicios</code> (lista). Cada ejercicio lleva <code>numero</code>, <code>parte</code>, <code>titulo</code>, <code>enunciado</code> e <code>items</code>. Cada ítem lleva <code>id</code> (a, b, c…), <code>pregunta</code> y <code>respuesta</code> (entero). Opcionales por ítem: <code>pistas</code> (lista de textos), <code>errores_comunes</code> (lista de <code>{"valor": número, "mensaje": texto}</code>), <code>herramientas_sugeridas</code> y <code>explicacion</code> (se muestra solo al acertar). Herramientas válidas: casillas, factorial, letras, arreglo, potencia, combinacion, bloque, combinar.</p>
+    </details>
+    <textarea id="jsonText" spellcheck="false" aria-label="JSON de ejercicios"></textarea>
+    <div class="row">
+      <button class="btn primary" id="loadJson">Cargar</button>
+      <label class="btn" for="jsonFile">Elegir archivo…</label>
+      <input type="file" id="jsonFile" accept=".json,application/json" hidden>
+      <button class="btn" id="copyJson">Copiar al portapapeles</button>
+      <button class="btn" id="resetJson">Restaurar ejemplo</button>
+      <span class="spacer" style="flex:1"></span>
+      <button class="btn ghost" id="closeLoader">Cerrar</button>
+    </div>
+    <div class="err" id="jsonErr" role="alert"></div>
+  </div>
+</dialog>
+
+<script>
+/* ---------- Example data ---------- */
+const EXAMPLE = {
+  "titulo": "Repartido 5: Permutaciones, arreglos y combinaciones",
+  "ejercicios": [
+    {
+      "numero": "2", "parte": "A", "titulo": "Ordenamientos simples",
+      "enunciado": "Resolvé cada situación pensando posición por posición.",
+      "items": [
+        { "id": "a", "pregunta": "¿De cuántas maneras se pueden ordenar 6 libros distintos en una repisa?", "respuesta": 720,
+          "herramientas_sugeridas": ["casillas", "factorial"],
+          "pistas": ["Pensá la repisa como 6 lugares. ¿Cuántos libros pueden ir en el primer lugar? ¿Y en el segundo, una vez puesto el primero?", "Estás ordenando todos los objetos disponibles, sin dejar ninguno afuera."],
+          "errores_comunes": [{ "valor": 36, "mensaje": "Multiplicaste 6 por 6: en cada lugar siguiente quedan menos libros disponibles." }],
+          "explicacion": "Son 6 decisiones sucesivas con 6, 5, 4, 3, 2 y 1 opciones: 6! = 720." },
+        { "id": "b", "pregunta": "¿De cuántas maneras pueden sentarse 5 personas distintas en una fila?", "respuesta": 120,
+          "herramientas_sugeridas": ["factorial"],
+          "pistas": ["Cada fila es un ordenamiento de las 5 personas."],
+          "explicacion": "Una permutación de 5 personas: 5! = 120." },
+        { "id": "c", "pregunta": "¿Cuántas palabras, con o sin sentido, pueden formarse usando todas las letras de la palabra DISCO?", "respuesta": 120,
+          "herramientas_sugeridas": ["letras", "factorial"],
+          "pistas": ["Antes de calcular, fijate si alguna letra de DISCO se repite."],
+          "explicacion": "DISCO tiene 5 letras distintas: 5! = 120." }
+      ]
+    },
+    {
+      "numero": "3", "parte": "A", "titulo": "Letras repetidas",
+      "enunciado": "Calculá cuántos ordenamientos distintos pueden formarse con las letras de cada palabra.",
+      "items": [
+        { "id": "a", "pregunta": "CASA", "respuesta": 12,
+          "herramientas_sugeridas": ["letras"],
+          "pistas": ["Si las dos A fueran distintas habría 4! ordenamientos. ¿Cuántas veces aparece cada palabra en esa cuenta?"],
+          "errores_comunes": [{ "valor": 24, "mensaje": "Contaste las dos A como si fueran distintas: intercambiarlas no produce una palabra nueva." }],
+          "explicacion": "4!/2! = 12." },
+        { "id": "b", "pregunta": "MAMA", "respuesta": 6,
+          "herramientas_sugeridas": ["letras"],
+          "pistas": ["Hay dos letras que se repiten, y cada repetición genera conteos duplicados."],
+          "errores_comunes": [
+            { "valor": 24, "mensaje": "Tu cuenta trata a las letras iguales como distinguibles." },
+            { "valor": 12, "mensaje": "Descontaste una sola de las repeticiones. Revisá cuántas letras se repiten." }],
+          "explicacion": "4!/(2!·2!) = 6." },
+        { "id": "c", "pregunta": "BANANA", "respuesta": 60,
+          "herramientas_sugeridas": ["letras"],
+          "pistas": ["Contá cuántas veces aparece cada letra: B, A y N."],
+          "errores_comunes": [
+            { "valor": 720, "mensaje": "Tu cuenta trata a las letras iguales como distinguibles." },
+            { "valor": 120, "mensaje": "Descontaste una repetición pero no la otra: revisá las N." },
+            { "valor": 360, "mensaje": "Descontaste una repetición pero no la otra: revisá las A." }],
+          "explicacion": "6!/(3!·2!) = 60." },
+        { "id": "d", "pregunta": "MATEMATICA", "respuesta": 151200,
+          "herramientas_sugeridas": ["letras"],
+          "pistas": ["Hay tres letras que se repiten. Anotá cuántas veces aparece cada una antes de dividir."],
+          "errores_comunes": [
+            { "valor": 3628800, "mensaje": "Tu cuenta trata a las letras iguales como distinguibles." },
+            { "valor": 302400, "mensaje": "Te falta descontar una de las letras repetidas." },
+            { "valor": 604800, "mensaje": "Solo descontaste la letra que más se repite; hay otras dos repetidas." }],
+          "explicacion": "M×2, A×3, T×2, E, I, C: 10!/(2!·3!·2!) = 151 200." }
+      ]
+    },
+    {
+      "numero": "5", "parte": "B", "titulo": "Podios",
+      "enunciado": "En una competencia participan 15 corredores.",
+      "items": [
+        { "id": "a", "pregunta": "¿De cuántas maneras puede formarse el podio con primer, segundo y tercer puesto?", "respuesta": 2730,
+          "herramientas_sugeridas": ["arreglo", "casillas"],
+          "pistas": ["¿Es lo mismo que Ana salga primera y Bruno tercero, que al revés?", "Un corredor no puede ocupar dos puestos."],
+          "errores_comunes": [
+            { "valor": 3375, "mensaje": "Tu cuenta permite que un mismo corredor ocupe más de un puesto." },
+            { "valor": 455, "mensaje": "Contaste grupos de tres sin distinguir quién sale primero, segundo o tercero." }],
+          "explicacion": "Arreglo sin repetición: 15·14·13 = 2730." },
+        { "id": "b", "pregunta": "¿De cuántas maneras pueden asignarse los primeros 5 puestos?", "respuesta": 360360,
+          "herramientas_sugeridas": ["arreglo", "casillas"],
+          "pistas": ["Es el mismo razonamiento que el podio, con más posiciones."],
+          "errores_comunes": [
+            { "valor": 759375, "mensaje": "Tu cuenta permite que un mismo corredor ocupe más de un puesto." },
+            { "valor": 3003, "mensaje": "Los puestos están ordenados: no es lo mismo quedar primero que quinto." }],
+          "explicacion": "15·14·13·12·11 = 360 360." }
+      ]
+    },
+    {
+      "numero": "14", "parte": "F", "titulo": "Personas juntas",
+      "enunciado": "Seis personas, entre ellas Ana y Bruno, se forman en fila.",
+      "items": [
+        { "id": "a", "pregunta": "¿De cuántas maneras pueden formarse sin restricciones?", "respuesta": 720,
+          "herramientas_sugeridas": ["factorial"],
+          "pistas": ["Sin restricciones, es ordenar a las 6 personas."],
+          "explicacion": "6! = 720." },
+        { "id": "b", "pregunta": "¿De cuántas maneras pueden formarse si Ana y Bruno deben quedar juntos?", "respuesta": 240,
+          "herramientas_sugeridas": ["bloque", "factorial", "combinar"],
+          "pistas": ["Pegá a Ana y Bruno en un solo bloque. ¿Cuántas unidades quedan para ordenar?", "Dentro del bloque, Ana y Bruno también pueden cambiar de lugar."],
+          "errores_comunes": [
+            { "valor": 120, "mensaje": "Tratar a Ana y Bruno como bloque está bien, pero dentro del bloque también pueden intercambiarse." },
+            { "valor": 48, "mensaje": "Revisá cuántas unidades quedan para ordenar: son seis personas en total." }],
+          "explicacion": "5 unidades (el bloque y 4 personas): 5!·2! = 240." },
+        { "id": "c", "pregunta": "¿De cuántas maneras pueden formarse si Ana y Bruno no deben quedar juntos?", "respuesta": 480,
+          "herramientas_sugeridas": ["factorial", "bloque", "combinar"],
+          "pistas": ["Contar directamente es difícil. ¿Qué pasa si contás todo y sacás lo que no querés?"],
+          "errores_comunes": [
+            { "valor": 240, "mensaje": "Ese número cuenta las filas donde sí quedan juntos." },
+            { "valor": 600, "mensaje": "Al restar, usaste un conteo de «juntos» que no considera el orden interno del bloque." }],
+          "explicacion": "Complemento: 6! − 5!·2! = 720 − 240 = 480." }
+      ]
+    },
+    {
+      "numero": "16", "parte": "F", "titulo": "Comisiones con restricciones",
+      "enunciado": "En un grupo hay 6 estudiantes de informática y 5 estudiantes de datos. Se quiere formar una comisión de 4 integrantes.",
+      "items": [
+        { "id": "a", "pregunta": "¿Cuántas comisiones se pueden formar sin restricciones?", "respuesta": 330,
+          "herramientas_sugeridas": ["combinacion"],
+          "pistas": ["En una comisión no hay cargos. ¿Cambia algo si nombrás a los integrantes en otro orden?"],
+          "errores_comunes": [{ "valor": 7920, "mensaje": "Tu cuenta distingue el orden de los integrantes, y en una comisión no hay cargos." }],
+          "explicacion": "C(11,4) = 330." },
+        { "id": "b", "pregunta": "¿Cuántas comisiones tienen exactamente 2 estudiantes de informática?", "respuesta": 150,
+          "herramientas_sugeridas": ["combinacion", "combinar"],
+          "pistas": ["Si hay exactamente 2 de informática, ¿cuántos de datos tiene que haber?", "Son dos elecciones independientes que se hacen una y otra: ¿suman o multiplican?"],
+          "errores_comunes": [
+            { "valor": 25, "mensaje": "Elegir los de informática Y los de datos son decisiones sucesivas: se combinan multiplicando." },
+            { "valor": 15, "mensaje": "Elegiste solo una parte de la comisión: faltan los otros dos integrantes." },
+            { "valor": 10, "mensaje": "Elegiste solo una parte de la comisión: faltan los otros dos integrantes." }],
+          "explicacion": "C(6,2)·C(5,2) = 15·10 = 150." },
+        { "id": "c", "pregunta": "¿Cuántas comisiones tienen al menos 1 estudiante de datos?", "respuesta": 315,
+          "herramientas_sugeridas": ["combinacion", "combinar"],
+          "pistas": ["«Al menos uno» suele resolverse con complemento. ¿Cuál es el caso opuesto?"],
+          "errores_comunes": [
+            { "valor": 325, "mensaje": "Restaste las comisiones sin estudiantes de informática. El opuesto de «al menos 1 de datos» es «ninguno de datos»." },
+            { "valor": 600, "mensaje": "Fijar primero un estudiante de datos y elegir el resto cuenta varias veces la misma comisión." },
+            { "valor": 330, "mensaje": "Ese es el total sin restricciones: te falta sacar las comisiones que no cumplen la condición." }],
+          "explicacion": "Complemento: C(11,4) − C(6,4) = 330 − 15 = 315." }
+      ]
+    }
+  ]
+};
+
+/* ---------- Tools ---------- */
+const TOOLS = {
+  casillas:   {name:"Casillas",               g:"□ × □",   d:"Una casilla por decisión; se multiplican"},
+  factorial:  {name:"Factorial",              g:"n!",      d:"Ordenar n objetos distintos"},
+  letras:     {name:"Letras repetidas",       g:"AAB",     d:"Ordenar con elementos iguales"},
+  arreglo:    {name:"Arreglo sin repetición", g:"n·(n−1)…", d:"Elegir k de n en orden, sin repetir"},
+  potencia:   {name:"Arreglo con repetición", g:"nᵏ",      d:"k posiciones con n opciones cada una"},
+  combinacion:{name:"Combinación",            g:"C(n,k)",  d:"Elegir k de n, sin orden"},
+  bloque:     {name:"Bloque juntos",          g:"[AB] ○ ○", d:"Elementos que deben ir pegados"},
+  combinar:   {name:"Combinar resultados",    g:"R1 ± R2", d:"Casos, complemento, productos"}
+};
+
+/* ---------- Rational arithmetic with BigInt ---------- */
+const gcd=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b){[a,b]=[b,a%b]}return a};
+function Q(n,d=1n){n=BigInt(n);d=BigInt(d);if(d===0n)throw new Error("División por cero");if(d<0n){n=-n;d=-d}const g=gcd(n,d)||1n;return{n:n/g,d:d/g}}
+const qadd=(a,b)=>Q(a.n*b.d+b.n*a.d,a.d*b.d), qsub=(a,b)=>Q(a.n*b.d-b.n*a.d,a.d*b.d),
+      qmul=(a,b)=>Q(a.n*b.n,a.d*b.d), qdiv=(a,b)=>{if(b.n===0n)throw new Error("División por cero");return Q(a.n*b.d,a.d*b.n)};
+function fact(n){let r=1n;for(let i=2n;i<=BigInt(n);i++)r*=i;return r}
+function fmtBig(b){const s=(b<0n?-b:b).toString();return (b<0n?"−":"")+s.replace(/\B(?=(\d{3})+(?!\d))/g,"\u202F")}
+function fmtQ(q){return q.d===1n?fmtBig(q.n):fmtBig(q.n)+"/"+fmtBig(q.d)}
+const MAXN=120;
+function pint(s,{min=0,max=MAXN,name="n"}={}){
+  if(s===undefined||String(s).trim()==="")return {err:`Falta ${name}`};
+  if(!/^\d+$/.test(String(s).trim()))return {err:`${name} debe ser entero`};
+  const v=Number(s);if(v<min||v>max)return {err:`${name} entre ${min} y ${max}`};return {v};
+}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- State ---------- */
+let DATA=null, exIdx=0, itIdx=0;
+const workspaces={}, progress={};
+const key=()=>exIdx+"-"+itIdx;
+function ws(){return workspaces[key()] ||= {cards:[],next:1,answer:""}}
+function prog(k=key()){return progress[k] ||= {done:false,attempts:0,hints:0}}
+
+/* ---------- Validation ---------- */
+function validate(d){
+  const errs=[];
+  if(!d||typeof d!=="object")return ["El contenido no es un objeto JSON."];
+  if(!Array.isArray(d.ejercicios)||!d.ejercicios.length)return ["Falta la lista «ejercicios» o está vacía."];
+  d.ejercicios.forEach((e,i)=>{
+    const w=`Ejercicio ${i+1}`;
+    if(!Array.isArray(e.items)){ if(e.pregunta!==undefined&&e.respuesta!==undefined){e.items=[{id:"a",pregunta:e.pregunta,respuesta:e.respuesta,pistas:e.pistas,errores_comunes:e.errores_comunes,herramientas_sugeridas:e.herramientas_sugeridas,explicacion:e.explicacion}]} else {errs.push(`${w}: falta «items».`);return} }
+    if(!e.items.length)errs.push(`${w}: «items» está vacío.`);
+    e.items.forEach((it,j)=>{
+      const wi=`${w}, ítem ${it.id||j+1}`;
+      if(!it.pregunta)errs.push(`${wi}: falta «pregunta».`);
+      if(it.respuesta===undefined||!/^-?\d+$/.test(String(it.respuesta).trim()))errs.push(`${wi}: «respuesta» debe ser un entero.`);
+      if(it.herramientas_sugeridas){const bad=it.herramientas_sugeridas.filter(h=>!TOOLS[h]);if(bad.length)errs.push(`${wi}: herramienta desconocida «${bad.join(", ")}».`)}
+      if(it.errores_comunes&&!Array.isArray(it.errores_comunes))errs.push(`${wi}: «errores_comunes» debe ser una lista.`);
+      if(!it.id)it.id=String.fromCharCode(97+j);
+    });
+  });
+  return errs;
+}
+function loadData(d){
+  DATA=d; exIdx=0; itIdx=0;
+  for(const k in workspaces)delete workspaces[k];
+  for(const k in progress)delete progress[k];
+  document.getElementById("setTitle").textContent=d.titulo||"";
+  renderAll();
+}
+
+/* ---------- Card logic ---------- */
+function newCard(type){
+  const w=ws(); const c={id:w.next++,type,p:{}};
+  c.tag="R"+c.id;
+  if(type==="casillas")c.p.slots=[{v:"",l:"1º"},{v:"",l:"2º"},{v:"",l:"3º"}];
+  if(type==="combinar")c.p.toks=[];
+  if(type==="bloque")c.p.fijo=false;
+  w.cards.push(c); renderCards(c.id);
+}
+function findCard(tag){return ws().cards.find(c=>c.tag===tag)}
+
+function compute(c,seen=new Set()){
+  try{
+    const p=c.p;
+    switch(c.type){
+      case "casillas":{
+        if(!p.slots.length)return {err:"Agregá al menos una casilla"};
+        let r=1n;for(const s of p.slots){const x=pint(s.v,{name:"cada casilla",max:1e9});if(x.err)return {err:"Completá todas las casillas con enteros"};r*=BigInt(x.v)}
+        return {v:Q(r)};
+      }
+      case "factorial":{const n=pint(p.n);if(n.err)return {err:n.err};return {v:Q(fact(n.v))}}
+      case "letras":{
+        const w=normWord(p.w);if(!w.length)return {err:"Escribí una palabra"};if(w.length>MAXN)return {err:"Palabra demasiado larga"};
+        let den=1n;for(const [,k] of letterCounts(w))den*=fact(k);
+        return {v:Q(fact(w.length),den)};
+      }
+      case "arreglo":{
+        const n=pint(p.n),k=pint(p.k,{name:"k"});if(n.err)return {err:n.err};if(k.err)return {err:k.err};
+        if(k.v>n.v)return {err:"k no puede ser mayor que n sin repetir"};
+        return {v:Q(fact(n.v),fact(n.v-k.v))};
+      }
+      case "potencia":{const n=pint(p.n,{max:1e6}),k=pint(p.k,{name:"k"});if(n.err)return {err:n.err};if(k.err)return {err:k.err};return {v:Q(BigInt(n.v)**BigInt(k.v))}}
+      case "combinacion":{
+        const n=pint(p.n),k=pint(p.k,{name:"k"});if(n.err)return {err:n.err};if(k.err)return {err:k.err};
+        if(k.v>n.v)return {err:"k no puede ser mayor que n"};
+        return {v:Q(fact(n.v),fact(k.v)*fact(n.v-k.v))};
+      }
+      case "bloque":{
+        const n=pint(p.n,{name:"total"}),b=pint(p.b,{name:"tamaño del bloque",min:1});if(n.err)return {err:n.err};if(b.err)return {err:b.err};
+        if(b.v>n.v)return {err:"El bloque no puede tener más elementos que el total"};
+        return {v:Q(fact(n.v-b.v+1)*(p.fijo?1n:fact(b.v)))};
+      }
+      case "combinar":{
+        if(seen.has(c.tag))return {err:"Referencia circular"};seen.add(c.tag);
+        if(!p.toks.length)return {err:"Armá una expresión"};
+        return {v:evalTokens(p.toks,seen,c.tag)};
+      }
+    }
+  }catch(e){return {err:e.message}}
+}
+function normWord(w){return (w||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().replace(/[^A-ZÑ]/g,"")}
+function letterCounts(w){const m=new Map();for(const ch of w)m.set(ch,(m.get(ch)||0)+1);return m}
+
+function evalTokens(toks,seen,self){
+  const prec={"+":1,"−":1,"×":2,"÷":2}, out=[], ops=[];
+  let expectOperand=true;
+  for(const t of toks){
+    if(t.t==="num"||t.t==="ref"){if(!expectOperand)throw new Error("Falta un operador entre dos valores");out.push(t);expectOperand=false}
+    else if(t.v==="("){if(!expectOperand)throw new Error("Falta un operador antes de «(»");ops.push(t)}
+    else if(t.v===")"){if(expectOperand)throw new Error("Paréntesis vacío o incompleto");while(ops.length&&ops.at(-1).v!=="(")out.push(ops.pop());if(!ops.length)throw new Error("Paréntesis sin abrir");ops.pop()}
+    else {if(expectOperand)throw new Error("Falta un valor antes de «"+t.v+"»");while(ops.length&&ops.at(-1).v!=="("&&prec[ops.at(-1).v]>=prec[t.v])out.push(ops.pop());ops.push(t);expectOperand=true}
+  }
+  if(expectOperand)throw new Error("La expresión termina en un operador");
+  while(ops.length){const o=ops.pop();if(o.v==="(")throw new Error("Falta cerrar un paréntesis");out.push(o)}
+  const st=[];
+  for(const t of out){
+    if(t.t==="num")st.push(Q(t.v));
+    else if(t.t==="ref"){
+      if(t.v===self)throw new Error("Una tarjeta no puede usarse a sí misma");
+      const c=findCard(t.v);if(!c)throw new Error(t.v+" ya no existe");
+      const r=compute(c,new Set(seen));if(r.err)throw new Error(t.v+": "+r.err);st.push(r.v);
+    } else {const b=st.pop(),a=st.pop();st.push(t.v==="+"?qadd(a,b):t.v==="−"?qsub(a,b):t.v==="×"?qmul(a,b):qdiv(a,b))}
+  }
+  return st[0];
+}
+
+/* ---------- Rendering ---------- */
+function renderAll(){renderList();renderStatement();renderPalette();renderCards();renderAnswer();renderProgress()}
+
+function renderList(){
+  const ol=document.getElementById("exList");
+  ol.innerHTML=DATA.ejercicios.map((e,i)=>`<li><button class="exbtn" data-ex="${i}" aria-current="${i===exIdx}">
+    <span class="num">${esc(e.numero??i+1)}</span><span class="t">${esc(e.titulo||"Ejercicio")}</span>
+    <span class="dots">${e.items.map((_,j)=>{const pr=progress[i+"-"+j];return `<span class="${pr?.done?"done":pr?.attempts?"tried":""}"></span>`}).join("")}</span></button></li>`).join("");
+  ol.querySelectorAll(".exbtn").forEach(b=>b.onclick=()=>{exIdx=+b.dataset.ex;itIdx=0;renderAll();window.scrollTo({top:0})});
+}
+function curEx(){return DATA.ejercicios[exIdx]} function curIt(){return curEx().items[itIdx]}
+
+function renderStatement(){
+  const e=curEx(),it=curIt(),el=document.getElementById("statement");
+  el.innerHTML=`<div class="where">${e.parte?`Parte ${esc(e.parte)}, `:""}ejercicio ${esc(e.numero??exIdx+1)}</div>
+    <h2>${esc(e.titulo||"")}</h2>
+    ${e.enunciado?`<p class="context">${esc(e.enunciado)}</p>`:""}
+    ${e.items.length>1?`<div class="itemtabs" role="tablist">${e.items.map((x,j)=>`<button role="tab" class="itemtab ${progress[exIdx+"-"+j]?.done?"done":""}" aria-selected="${j===itIdx}" data-it="${j}">${esc(x.id)}</button>`).join("")}</div>`:""}
+    <p class="question">${e.items.length>1?`${esc(it.id)}) `:""}${esc(it.pregunta)}</p>`;
+  el.querySelectorAll(".itemtab").forEach(b=>b.onclick=()=>{saveAnswerDraft();itIdx=+b.dataset.it;renderStatement();renderPalette();renderCards();renderAnswer()});
+}
+
+function renderPalette(){
+  const el=document.getElementById("palette"), pr=prog();
+  const sug=(pr.attempts>=2||pr.hints>0)?(curIt().herramientas_sugeridas||[]):[];
+  el.innerHTML=Object.entries(TOOLS).map(([k,t])=>`<button class="tool ${sug.includes(k)?"suggested":""}" data-tool="${k}" title="${esc(t.d)}">
+    <span class="g">${t.g}</span><span class="n">${t.name}</span><span class="d">${t.d}</span></button>`).join("");
+  el.querySelectorAll(".tool").forEach(b=>b.onclick=()=>newCard(b.dataset.tool));
+}
+
+function renderCards(newId){
+  const el=document.getElementById("cards"), w=ws();
+  if(!w.cards.length){el.innerHTML=`<div class="empty">Elegí una herramienta de arriba para empezar a contar.</div>`;return}
+  el.innerHTML="";
+  for(const c of w.cards){
+    const d=document.createElement("article");d.className="card"+(c.id===newId?" new":"");d.dataset.id=c.id;
+    d.innerHTML=`<div class="card-head"><span class="tag">${c.tag}</span><span class="name">${TOOLS[c.type].name}</span>
+      <span class="val" data-val></span>
+      <button class="btn small" data-use>Usar como respuesta</button>
+      <button class="btn small ghost" data-del aria-label="Quitar ${c.tag}">Quitar</button></div>
+      <div class="card-body">${bodyHTML(c)}<div class="viz" data-viz></div></div>`;
+    el.appendChild(d); wireCard(c,d);
+  }
+  updateAll();
+  if(newId){const n=el.querySelector(`[data-id="${newId}"] input`);n?.focus({preventScroll:true});el.querySelector(`[data-id="${newId}"]`)?.scrollIntoView({block:"nearest",behavior:"smooth"})}
+}
+
+function field(name,label,val,cls=""){return `<span class="field"><label for="f${name}${Math.random().toString(36).slice(2,6)}">${label}</label><input data-p="${name}" class="${cls}" value="${esc(val??"")}" inputmode="${cls?"text":"numeric"}" autocomplete="off"></span>`}
+function fixLabels(d){d.querySelectorAll(".field").forEach(f=>{const l=f.querySelector("label"),i=f.querySelector("input");i.id=l.htmlFor})}
+
+function bodyHTML(c){
+  const p=c.p;
+  switch(c.type){
+    case "casillas":return `<div class="slots" data-slots>${p.slots.map((s,i)=>`${i?'<span class="times" aria-hidden="true">×</span>':""}<span class="slot">
+        <input class="box" data-slot="${i}" value="${esc(s.v)}" inputmode="numeric" aria-label="Casilla ${i+1}: cantidad de opciones">
+        <input class="lbl" data-lbl="${i}" value="${esc(s.l)}" aria-label="Etiqueta de la casilla ${i+1}"></span>`).join("")}</div>
+      <div class="slot-actions"><button class="btn small" data-add>+ Casilla</button><button class="btn small" data-rem>− Casilla</button>
+      <span class="fill">Rellenar bajando desde <input data-fill inputmode="numeric" aria-label="Número inicial"><button class="btn small" data-dofill>Rellenar</button></span></div>`;
+    case "factorial":return field("n","n (objetos a ordenar)",p.n);
+    case "letras":return field("w","Palabra u objetos",p.w,"wide");
+    case "arreglo":case "combinacion":return field("n","n (disponibles)",p.n)+field("k","k (elegidos)",p.k);
+    case "potencia":return field("n","n (opciones por posición)",p.n)+field("k","k (posiciones)",p.k);
+    case "bloque":return field("n","Total de elementos",p.n)+field("b","Cuántos van juntos",p.b)+
+      `<label class="check"><input type="checkbox" data-fijo ${p.fijo?"checked":""}> El orden dentro del bloque es fijo</label>`;
+    case "combinar":return `<div class="expr" data-expr></div><div class="keypad" data-keys></div>`;
+  }
+}
+
+function wireCard(c,d){
+  fixLabels(d);
+  d.querySelector("[data-del]").onclick=()=>{const w=ws();w.cards=w.cards.filter(x=>x!==c);w.cards.forEach(x=>{if(x.type==="combinar")x.p.toks=x.p.toks.filter(t=>t.v!==c.tag)});renderCards()};
+  d.querySelector("[data-use]").onclick=()=>{const r=compute(c);if(r.err)return showFeedback("hint","Esa tarjeta todavía no tiene un valor",r.err);
+    if(r.v.d!==1n)return showFeedback("hint","El resultado no es entero","Un conteo siempre da un número entero: revisá las divisiones.");
+    const a=document.getElementById("answer");a.value=r.v.n.toString();saveAnswerDraft();a.focus()};
+  d.querySelectorAll("input[data-p]").forEach(i=>i.oninput=()=>{c.p[i.dataset.p]=i.value;updateAll()});
+  const fj=d.querySelector("[data-fijo]");if(fj)fj.onchange=()=>{c.p.fijo=fj.checked;updateAll()};
+  if(c.type==="casillas"){
+    d.querySelectorAll("[data-slot]").forEach(i=>i.oninput=()=>{c.p.slots[+i.dataset.slot].v=i.value.replace(/\D/g,"");i.value=c.p.slots[+i.dataset.slot].v;updateAll()});
+    d.querySelectorAll("[data-lbl]").forEach(i=>i.oninput=()=>{c.p.slots[+i.dataset.lbl].l=i.value});
+    const rer=()=>{d.querySelector(".card-body").innerHTML=bodyHTML(c)+'<div class="viz" data-viz></div>';wireCard(c,d);updateAll()};
+    d.querySelector("[data-add]").onclick=()=>{if(c.p.slots.length<14){c.p.slots.push({v:"",l:(c.p.slots.length+1)+"º"});rer();d.querySelectorAll("[data-slot]")[c.p.slots.length-1]?.focus()}};
+    d.querySelector("[data-rem]").onclick=()=>{if(c.p.slots.length>1){c.p.slots.pop();rer()}};
+    d.querySelector("[data-dofill]").onclick=()=>{const v=pint(d.querySelector("[data-fill]").value,{max:1e6});if(v.err)return;c.p.slots.forEach((s,i)=>s.v=String(Math.max(v.v-i,0)));rer()};
+  }
+}
+
+function updateAll(){
+  document.querySelectorAll("#cards .card").forEach(d=>{
+    const c=ws().cards.find(x=>x.id==d.dataset.id);if(!c)return;
+    const r=compute(c),v=d.querySelector("[data-val]");
+    if(r.err){v.textContent=r.err;v.classList.add("err")}else{v.textContent="= "+fmtQ(r.v);v.classList.remove("err")}
+    d.querySelector("[data-viz]").innerHTML=vizHTML(c,r);
+    if(c.type==="combinar")renderCombiner(c,d);
+  });
+}
+
+function seq(n,k){ // n·(n−1)·…·(n−k+1) as slot boxes
+  const arr=[];const show=k<=9?k:7;
+  for(let i=0;i<show;i++)arr.push(n-i);
+  let h=arr.map((x,i)=>`${i?'<span class="times" aria-hidden="true">×</span>':""}<span class="slot"><span class="box ro">${x}</span><span class="lbl">${i+1}º</span></span>`).join("");
+  if(k>9)h+=`<span class="times">×…×</span><span class="slot"><span class="box ro">${n-k+1}</span><span class="lbl">${k}º</span></span>`;
+  return `<div class="slots">${h}</div>`;
+}
+function vizHTML(c,r){
+  const p=c.p, ok=!r.err;
+  switch(c.type){
+    case "casillas":{const vals=p.slots.map(s=>s.v||"□");return `<div class="formula">${vals.join(" × ")}${ok?" = "+fmtQ(r.v):""}</div>`}
+    case "factorial":{if(!ok)return "";const n=+p.n;if(n===0)return `<div class="formula">0! = 1</div><p class="note">Hay una sola forma de ordenar cero objetos.</p>`;
+      return seq(n,n)+`<div class="formula">${n}! = ${fmtQ(r.v)}</div>`}
+    case "letras":{const w=normWord(p.w);if(!w)return `<p class="note">Escribí la palabra: se agrupan las letras iguales automáticamente.</p>`;
+      const cnt=[...letterCounts(w)], reps=cnt.filter(([,k])=>k>1);
+      const tiles=cnt.map(([ch,k])=>`<span class="tilegroup ${k>1?"rep":""}">${Array(Math.min(k,8)).fill(`<span class="tile">${ch}</span>`).join("")}${k>1?`<span class="cnt">×${k}</span>`:""}</span>`).join("");
+      const den=reps.length?reps.map(([,k])=>k+"!").join(" · "):"1";
+      return `<div class="tiles">${tiles}</div><div class="formula"><span class="frac"><span>${w.length}!</span><span>${den}</span></span>${ok?" = "+fmtQ(r.v):""}</div>
+      <p class="note">${w.length} elementos; ${reps.length?`se repiten ${reps.map(([ch,k])=>`${ch} (${k})`).join(", ")}`:"ninguno se repite"}.</p>`}
+    case "arreglo":{if(!ok)return "";const n=+p.n,k=+p.k;if(k===0)return `<p class="note">Elegir 0 elementos: una sola forma.</p>`;
+      return seq(n,k)+`<div class="formula"><span class="frac"><span>${n}!</span><span>(${n}−${k})!</span></span> = ${fmtQ(r.v)}</div>`}
+    case "potencia":{if(!ok)return "";const n=+p.n,k=+p.k;const show=Math.min(k,9);
+      let h=Array.from({length:show},(_,i)=>`${i?'<span class="times" aria-hidden="true">×</span>':""}<span class="slot"><span class="box ro">${n}</span><span class="lbl">${i+1}º</span></span>`).join("");
+      if(k>9)h+=`<span class="times">…</span>`;
+      return `<div class="slots">${h}</div><div class="formula">${n}<sup>${k}</sup> = ${fmtQ(r.v)}</div>`}
+    case "combinacion":{if(!ok)return "";const n=+p.n,k=+p.k;
+      return `<div class="formula"><span class="binom"><span class="p">(</span><span class="s"><span>${n}</span><span>${k}</span></span><span class="p">)</span></span> =
+        <span class="frac"><span>${n}!</span><span>${k}! · ${n-k}!</span></span> = ${fmtQ(r.v)}</div>
+        <p class="note">Las ${fmtQ(Q(fact(n),fact(n-k)))} selecciones ordenadas se agrupan de a ${k}! = ${fmtBig(fact(k))}, porque el orden no importa.</p>`}
+    case "bloque":{if(!ok)return "";const n=+p.n,b=+p.b,u=n-b+1;
+      const inner=Array.from({length:Math.min(b,8)},(_,i)=>`<span class="unit">${String.fromCharCode(65+i)}</span>`).join("");
+      const rest=Array.from({length:Math.min(n-b,12)},()=>`<span class="unit">○</span>`).join("");
+      return `<div class="units"><span class="blockunit" title="Bloque">${inner}</span>${rest}${n-b>12?"…":""}</div>
+      <div class="formula">${u}!${p.fijo?"":` × ${b}!`} = ${fmtQ(r.v)}</div>
+      <p class="note">Se ordenan ${u} unidades (el bloque cuenta como una)${p.fijo?"; el bloque va en un orden fijo":`, y dentro del bloque hay ${b}! órdenes`}.</p>`}
+    case "combinar":return "";
+  }
+}
+
+function renderCombiner(c,d){
+  const ex=d.querySelector("[data-expr]"),kp=d.querySelector("[data-keys]");
+  ex.innerHTML=c.p.toks.length?c.p.toks.map(t=>`<span class="tok ${t.t==="ref"?"ref":""}">${esc(t.v)}</span>`).join(""):`<span class="ph">Tocá tarjetas y operaciones: por ejemplo R1 − R2 para un complemento, o R1 + R2 para sumar casos.</span>`;
+  const others=ws().cards.filter(x=>x!==c);
+  if(kp.dataset.built!==String(others.map(o=>o.tag))){
+    kp.dataset.built=String(others.map(o=>o.tag));
+    kp.innerHTML=others.map(o=>`<button class="key ref" data-ref="${o.tag}">${o.tag}<small data-rv="${o.tag}"></small></button>`).join("")+
+      ["+","−","×","÷","(",")"].map(o=>`<button class="key" data-op="${o}" aria-label="${o}">${o}</button>`).join("")+
+      `<span class="numkey"><input data-num inputmode="numeric" aria-label="Número"><button class="key" data-addnum>+ nº</button></span>
+       <button class="key" data-back aria-label="Borrar último">⌫</button><button class="key" data-clear>Limpiar</button>`;
+    const set=f=>{f();updateAll()};
+    kp.querySelectorAll("[data-ref]").forEach(b=>b.onclick=()=>set(()=>c.p.toks.push({t:"ref",v:b.dataset.ref})));
+    kp.querySelectorAll("[data-op]").forEach(b=>b.onclick=()=>set(()=>c.p.toks.push({t:"op",v:b.dataset.op})));
+    kp.querySelector("[data-addnum]").onclick=()=>{const i=kp.querySelector("[data-num]");const v=pint(i.value,{max:1e12});if(v.err)return;set(()=>c.p.toks.push({t:"num",v:String(v.v)}));i.value=""};
+    kp.querySelector("[data-num]").onkeydown=e=>{if(e.key==="Enter")kp.querySelector("[data-addnum]").click()};
+    kp.querySelector("[data-back]").onclick=()=>set(()=>c.p.toks.pop());
+    kp.querySelector("[data-clear]").onclick=()=>set(()=>c.p.toks.length=0);
+  }
+  others.forEach(o=>{const s=kp.querySelector(`[data-rv="${o.tag}"]`);if(!s)return;const r=o.type==="combinar"?{err:1}:compute(o);s.textContent=r.err?"":"= "+fmtQ(r.v)});
+}
+
+/* ---------- Answer & feedback ---------- */
+const fb=document.getElementById("feedback"), ans=document.getElementById("answer");
+function showFeedback(kind,title,body){fb.className="feedback "+kind;void fb.offsetWidth;fb.classList.add("show");fb.innerHTML=`<strong>${esc(title)}</strong>${body?`<p>${esc(body)}</p>`:""}`}
+function hideFeedback(){fb.className="feedback";fb.innerHTML=""}
+function saveAnswerDraft(){ws().answer=ans.value}
+function renderAnswer(){
+  ans.value=ws().answer||"";hideFeedback();
+  const pr=prog(),it=curIt();
+  if(pr.done)showFeedback("ok","Resuelto",it.explicacion||"");
+  const hb=document.getElementById("hintBtn"),n=(it.pistas||[]).length;
+  hb.disabled=!n||pr.hints>=n;hb.textContent=n?`Pedir pista (${Math.min(pr.hints,n)}/${n})`:"Sin pistas";
+  const last=exIdx===DATA.ejercicios.length-1&&itIdx===curEx().items.length-1;
+  document.getElementById("nextBtn").disabled=last;
+  document.getElementById("prevBtn").disabled=exIdx===0&&itIdx===0;
+}
+function renderProgress(){
+  let t=0,d=0;DATA.ejercicios.forEach((e,i)=>e.items.forEach((_,j)=>{t++;if(progress[i+"-"+j]?.done)d++}));
+  document.getElementById("progText").textContent=`${d} de ${t} resueltos`;
+  document.getElementById("progBar").style.width=(t?d/t*100:0)+"%";
+}
+
+function check(){
+  const it=curIt(),pr=prog(),raw=ans.value.replace(/[\s.,\u202F]/g,"");
+  saveAnswerDraft();
+  if(!raw)return showFeedback("hint","Falta la respuesta","Escribila o tocá «Usar como respuesta» en una tarjeta.");
+  if(!/^\d+$/.test(raw))return showFeedback("hint","La respuesta tiene que ser un número entero","Un conteo da siempre una cantidad entera y no negativa.");
+  const a=BigInt(raw),c=BigInt(String(it.respuesta).trim());
+  if(a===c){
+    const first=!pr.done;pr.done=true;
+    showFeedback("ok",pr.attempts===0?"Correcto al primer intento":"Correcto",it.explicacion||"");
+    renderStatement();renderList();renderProgress();
+    return;
+  }
+  pr.attempts++;
+  let msg=null;
+  const known=(it.errores_comunes||[]).find(e=>String(e.valor).trim()===raw);
+  if(known)msg=known.mensaje;
+  else if(a===0n)msg="Si hay al menos una configuración posible, el conteo no puede ser cero. Revisá cada factor.";
+  else if(a>c&&a%c===0n)msg="Estás contando de más: cada configuración aparece varias veces en tu cuenta. Preguntate si el orden realmente importa o si hay elementos que no se distinguen.";
+  else if(a<c&&c%a===0n)msg="Te faltan configuraciones: parece que dejaste afuera algún orden. ¿Hay cargos distintos, posiciones o un orden interno de bloque que no contaste?";
+  else if(a>c)msg="Tu resultado es mayor que el correcto. Revisá las restricciones: repeticiones no permitidas, casos que se superponen o el primer dígito distinto de cero.";
+  else msg="Tu resultado es menor que el correcto. Revisá si te falta algún caso o si restaste de más.";
+  let extra="";
+  if(pr.attempts>=2&&(it.herramientas_sugeridas||[]).length){extra=" Herramientas que pueden servir: "+it.herramientas_sugeridas.map(h=>TOOLS[h].name).join(", ")+" (resaltadas arriba).";renderPalette()}
+  showFeedback("bad",`Todavía no (intento ${pr.attempts})`,msg+extra);
+  renderList();
+}
+function hint(){
+  const it=curIt(),pr=prog(),ps=it.pistas||[];if(pr.hints>=ps.length)return;
+  const h=ps[pr.hints];pr.hints++;
+  showFeedback("hint",`Pista ${pr.hints} de ${ps.length}`,h);
+  renderPalette();
+  const hb=document.getElementById("hintBtn");hb.textContent=`Pedir pista (${pr.hints}/${ps.length})`;hb.disabled=pr.hints>=ps.length;
+}
+function go(dir){
+  saveAnswerDraft();
+  if(dir>0){if(itIdx<curEx().items.length-1)itIdx++;else if(exIdx<DATA.ejercicios.length-1){exIdx++;itIdx=0}}
+  else{if(itIdx>0)itIdx--;else if(exIdx>0){exIdx--;itIdx=curEx().items.length-1}}
+  renderAll();window.scrollTo({top:0});
+}
+document.getElementById("checkBtn").onclick=check;
+ans.onkeydown=e=>{if(e.key==="Enter")check()};
+ans.oninput=saveAnswerDraft;
+document.getElementById("hintBtn").onclick=hint;
+document.getElementById("nextBtn").onclick=()=>go(1);
+document.getElementById("prevBtn").onclick=()=>go(-1);
+
+/* ---------- Loader ---------- */
+const dlg=document.getElementById("loader"),ta=document.getElementById("jsonText"),jerr=document.getElementById("jsonErr");
+const exampleText=()=>JSON.stringify(EXAMPLE,null,2);
+document.getElementById("openLoader").onclick=()=>{if(!ta.value)ta.value=exampleText();jerr.textContent="";dlg.showModal()};
+document.getElementById("closeLoader").onclick=()=>dlg.close();
+document.getElementById("resetJson").onclick=()=>{ta.value=exampleText();jerr.textContent=""};
+document.getElementById("copyJson").onclick=async()=>{
+  try{await navigator.clipboard.writeText(ta.value);jerr.textContent="";document.getElementById("copyJson").textContent="Copiado"}
+  catch{ta.select();jerr.textContent="No se pudo copiar automáticamente: el texto quedó seleccionado, copialo con Ctrl+C o Cmd+C."}
+  setTimeout(()=>document.getElementById("copyJson").textContent="Copiar al portapapeles",1800);
+};
+document.getElementById("jsonFile").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{ta.value=r.result;jerr.textContent=""};r.onerror=()=>jerr.textContent="No se pudo leer el archivo.";r.readAsText(f);
+};
+document.getElementById("loadJson").onclick=()=>{
+  let d;try{d=JSON.parse(ta.value)}catch(e){jerr.textContent="El texto no es JSON válido: "+e.message;return}
+  const errs=validate(d);if(errs.length){jerr.textContent=errs.slice(0,8).join("\n")+(errs.length>8?`\n…y ${errs.length-8} más.`:"");return}
+  loadData(d);dlg.close();
+};
+
+/* ---------- Start ---------- */
+const start=JSON.parse(JSON.stringify(EXAMPLE));validate(start);loadData(start);
+</script>
+</body>
+</html>
