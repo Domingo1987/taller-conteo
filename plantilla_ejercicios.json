@@ -1,0 +1,33 @@
+{
+  "titulo": "Nombre del banco de ejercicios",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "A",
+      "titulo": "Título del ejercicio",
+      "enunciado": "Consigna general para este grupo de ítems.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Pregunta del ítem",
+          "respuesta": 120,
+          "pistas": [
+            "Primera pista.",
+            "Segunda pista."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Feedback específico para esta respuesta incorrecta."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial",
+            "casillas"
+          ],
+          "explicacion": "Explicación que se muestra únicamente después de acertar."
+        }
+      ]
+    }
+  ]
+}

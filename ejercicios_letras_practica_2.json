@@ -1,0 +1,705 @@
+{
+  "titulo": "Ordenamientos de letras: con y sin repeticiones — práctica 2",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "A",
+      "titulo": "Palabras sin letras repetidas",
+      "enunciado": "¿Cuántas palabras, con o sin sentido, pueden formarse usando todas las letras de cada palabra?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "PLANO",
+          "respuesta": 120,
+          "pistas": [
+            "Fijate primero si alguna letra se repite.",
+            "Si todas son distintas, pensá cuántas opciones quedan en cada posición."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 25,
+              "mensaje": "Multiplicaste 5 por 5: después de elegir una letra, queda una opción menos para la posición siguiente."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial",
+            "casillas"
+          ],
+          "explicacion": "5 letras distintas: 5! = 120."
+        },
+        {
+          "id": "b",
+          "pregunta": "RITMO",
+          "respuesta": 120,
+          "pistas": [
+            "Todas las letras son distintas: es una permutación de 5 objetos."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "5! = 120."
+        },
+        {
+          "id": "c",
+          "pregunta": "JARDIN",
+          "respuesta": 720,
+          "pistas": [
+            "Contá cuántas letras tiene y verificá si alguna aparece más de una vez."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Revisá la cantidad de letras: hay 6 letras distintas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "6 letras distintas: 6! = 720."
+        },
+        {
+          "id": "d",
+          "pregunta": "VECTOR",
+          "respuesta": 720,
+          "pistas": [
+            "No hay letras repetidas."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "6 letras distintas: 6! = 720."
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "parte": "A",
+      "titulo": "Letras repetidas",
+      "enunciado": "Calculá cuántos ordenamientos distintos pueden formarse con las letras de cada palabra.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "MAMA",
+          "respuesta": 6,
+          "pistas": [
+            "Tanto la M como la A aparecen dos veces."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Tu cuenta trata a las letras iguales como si fueran distintas."
+            },
+            {
+              "valor": 12,
+              "mensaje": "Descontaste una sola repetición: hay dos M y dos A."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "4!/(2!·2!) = 6."
+        },
+        {
+          "id": "b",
+          "pregunta": "COCOA",
+          "respuesta": 30,
+          "pistas": [
+            "Contá por separado cuántas C y cuántas O aparecen."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Intercambiar dos C o dos O no produce un ordenamiento nuevo."
+            },
+            {
+              "valor": 60,
+              "mensaje": "Descontaste solo una de las dos letras que se repiten."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "C×2, O×2: 5!/(2!·2!) = 30."
+        },
+        {
+          "id": "c",
+          "pregunta": "TETERA",
+          "respuesta": 180,
+          "pistas": [
+            "Hay dos T y dos E; las otras letras aparecen una sola vez."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Ese sería el resultado si las 6 letras fueran distintas."
+            },
+            {
+              "valor": 360,
+              "mensaje": "Descontaste una sola pareja de letras repetidas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "T×2, E×2: 6!/(2!·2!) = 180."
+        },
+        {
+          "id": "d",
+          "pregunta": "GALLETA",
+          "respuesta": 1260,
+          "pistas": [
+            "Revisá las repeticiones de A y L."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 5040,
+              "mensaje": "Tu cuenta considera distintas las dos A y las dos L."
+            },
+            {
+              "valor": 2520,
+              "mensaje": "Te falta descontar una de las dos parejas repetidas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "A×2, L×2: 7!/(2!·2!) = 1260."
+        },
+        {
+          "id": "e",
+          "pregunta": "RECONOCER",
+          "respuesta": 22680,
+          "pistas": [
+            "Anotá la frecuencia de R, E, C, O y N antes de calcular.",
+            "Hay cuatro letras que aparecen exactamente dos veces."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 362880,
+              "mensaje": "Ese es 9!: todavía no descontaste ninguna repetición."
+            },
+            {
+              "valor": 181440,
+              "mensaje": "Descontaste una sola pareja; hay cuatro parejas repetidas."
+            },
+            {
+              "valor": 45360,
+              "mensaje": "Todavía te falta descontar una de las parejas de letras iguales."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "R×2, E×2, C×2, O×2, N×1: 9!/(2!·2!·2!·2!) = 22 680."
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "parte": "B",
+      "titulo": "Palabras que comienzan con…",
+      "enunciado": "Usando todas las letras de cada palabra, ¿cuántos ordenamientos distintos cumplen la condición?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "PLANO, que comience con P.",
+          "respuesta": 24,
+          "pistas": [
+            "Fijá la P en la primera posición y ordená las letras restantes."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Ese es el total sin restricción: la primera posición ya está fijada."
+            },
+            {
+              "valor": 4,
+              "mensaje": "Fijaste la P, pero todavía falta ordenar las cuatro letras restantes."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "P fija; se ordenan las otras 4 letras: 4! = 24."
+        },
+        {
+          "id": "b",
+          "pregunta": "GALLETA, que comience con A.",
+          "respuesta": 360,
+          "pistas": [
+            "Usá una de las A al principio y volvé a contar las repeticiones entre las 6 letras restantes."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 1260,
+              "mensaje": "Ese es el total de ordenamientos sin fijar la primera letra."
+            },
+            {
+              "valor": 180,
+              "mensaje": "Después de fijar una A, solo las L siguen repetidas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "casillas"
+          ],
+          "explicacion": "Quedan G, A, L, L, E, T: 6!/2! = 360."
+        },
+        {
+          "id": "c",
+          "pregunta": "ANANAS, que comience con A.",
+          "respuesta": 30,
+          "pistas": [
+            "Fijá una A. Entre las cinco letras restantes todavía se repiten A y N."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Todavía hay letras repetidas entre las posiciones restantes."
+            },
+            {
+              "valor": 60,
+              "mensaje": "Descontaste solo una de las repeticiones que quedan."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "Quedan A×2, N×2, S: 5!/(2!·2!) = 30."
+        },
+        {
+          "id": "d",
+          "pregunta": "TETERA, que comience con T.",
+          "respuesta": 60,
+          "pistas": [
+            "Al fijar una T adelante, en el resto queda una sola T.",
+            "Las E todavía aparecen dos veces."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "En las cinco posiciones restantes siguen apareciendo dos E iguales."
+            },
+            {
+              "valor": 180,
+              "mensaje": "Ese resultado corresponde a no fijar la primera letra."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "Quedan T, E, E, R, A: 5!/2! = 60."
+        },
+        {
+          "id": "e",
+          "pregunta": "VECTOR, que comience con vocal.",
+          "respuesta": 240,
+          "pistas": [
+            "Identificá las vocales de VECTOR.",
+            "Después de elegir la primera letra, las otras cinco son distintas."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Contaste una sola vocal posible para la primera posición."
+            },
+            {
+              "valor": 720,
+              "mensaje": "Ese es el total sin la condición de comenzar con vocal."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Hay 2 vocales posibles para el primer lugar y luego 5! ordenamientos: 2·120 = 240."
+        }
+      ]
+    },
+    {
+      "numero": "4",
+      "parte": "B",
+      "titulo": "Palabras que terminan con… o empiezan y terminan con…",
+      "enunciado": "Usando todas las letras de cada palabra, ¿cuántos ordenamientos distintos cumplen la condición?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "JARDIN, que termine en N.",
+          "respuesta": 120,
+          "pistas": [
+            "Fijá la N en la última posición y ordená las otras cinco letras."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Ese es el total sin fijar la última posición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "N fija al final; las otras 5 letras se ordenan de 5! = 120 formas."
+        },
+        {
+          "id": "b",
+          "pregunta": "GALLETA, que termine en A.",
+          "respuesta": 360,
+          "pistas": [
+            "Usá una A al final y volvé a contar las letras repetidas."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Las dos L siguen siendo iguales entre sí."
+            },
+            {
+              "valor": 1260,
+              "mensaje": "Ese es el total sin la condición de terminar en A."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "Quedan G, A, L, L, E, T: 6!/2! = 360."
+        },
+        {
+          "id": "c",
+          "pregunta": "RITMO, que comience con R y termine con O.",
+          "respuesta": 6,
+          "pistas": [
+            "Dos posiciones ya están fijadas. Solo se ordenan las tres letras del medio."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Ese resultado corresponde a fijar solo uno de los dos extremos."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "En el medio quedan I, T, M: 3! = 6."
+        },
+        {
+          "id": "d",
+          "pregunta": "ANANAS, que comience y termine con A.",
+          "respuesta": 12,
+          "pistas": [
+            "Usá dos A en los extremos y analizá las cuatro letras que quedan."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "En el medio quedan dos N iguales, por lo que no todos los 4! órdenes son distintos."
+            },
+            {
+              "valor": 30,
+              "mensaje": "Ese resultado corresponde a fijar una sola A."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "En el medio quedan A, N, N, S: 4!/2! = 12."
+        },
+        {
+          "id": "e",
+          "pregunta": "TETERA, que comience con T y termine con A.",
+          "respuesta": 12,
+          "pistas": [
+            "Después de fijar los extremos, revisá qué letra sigue repetida en el medio."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Las dos E del medio son iguales."
+            },
+            {
+              "valor": 60,
+              "mensaje": "Ese resultado corresponde a fijar únicamente la T inicial."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras"
+          ],
+          "explicacion": "En el medio quedan E, T, E, R: 4!/2! = 12."
+        },
+        {
+          "id": "f",
+          "pregunta": "VECTOR, que comience con consonante y termine con vocal.",
+          "respuesta": 192,
+          "pistas": [
+            "Contá las consonantes posibles para el primer lugar y las vocales posibles para el último.",
+            "Después ordená las cuatro letras restantes en el medio."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Ordenaste las letras del medio, pero faltó contar las opciones para los extremos."
+            },
+            {
+              "valor": 8,
+              "mensaje": "Solo elegiste los extremos; todavía falta ordenar las cuatro letras restantes."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar"
+          ],
+          "explicacion": "4 consonantes · 2 vocales · 4! = 4·2·24 = 192."
+        }
+      ]
+    },
+    {
+      "numero": "5",
+      "parte": "F",
+      "titulo": "Letras juntas y separadas",
+      "enunciado": "Usando todas las letras de cada palabra, ¿cuántos ordenamientos distintos cumplen la condición?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "VECTOR, con las dos vocales juntas.",
+          "respuesta": 240,
+          "pistas": [
+            "Tomá las dos vocales como un solo bloque.",
+            "Dentro del bloque, las vocales pueden aparecer en dos órdenes."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Ordenaste el bloque con las consonantes, pero olvidaste el orden interno de las dos vocales."
+            },
+            {
+              "valor": 48,
+              "mensaje": "Revisá cuántas unidades quedan al formar el bloque."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "bloque",
+            "factorial",
+            "combinar"
+          ],
+          "explicacion": "5 unidades (bloque + V, C, T, R) y 2! órdenes internos: 5!·2! = 240."
+        },
+        {
+          "id": "b",
+          "pregunta": "VECTOR, con las vocales juntas y en el orden E, O.",
+          "respuesta": 120,
+          "pistas": [
+            "El bloque EO tiene el orden interno fijado."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 240,
+              "mensaje": "No hay que multiplicar por 2!: el orden dentro del bloque ya está fijado."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "bloque"
+          ],
+          "explicacion": "Bloque fijo EO + 4 consonantes: 5! = 120."
+        },
+        {
+          "id": "c",
+          "pregunta": "VECTOR, sin que las dos vocales queden juntas.",
+          "respuesta": 480,
+          "pistas": [
+            "Usá el complemento: total de ordenamientos menos los casos con las vocales juntas."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 240,
+              "mensaje": "Ese número cuenta justamente los casos en que las vocales están juntas."
+            },
+            {
+              "valor": 600,
+              "mensaje": "Revisá la resta: el total es 6! y los casos juntos son 240."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial",
+            "bloque",
+            "combinar"
+          ],
+          "explicacion": "Complemento: 6! − 5!·2! = 720 − 240 = 480."
+        },
+        {
+          "id": "d",
+          "pregunta": "GALLETA, con las dos L juntas.",
+          "respuesta": 360,
+          "pistas": [
+            "Las dos L forman un único bloque LL.",
+            "Las dos A siguen siendo iguales entre sí."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Todavía hay dos A iguales: sus intercambios no crean casos nuevos."
+            },
+            {
+              "valor": 1440,
+              "mensaje": "Las dos L son iguales; el bloque LL no tiene dos órdenes internos distintos."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "bloque",
+            "letras"
+          ],
+          "explicacion": "Unidades G, A, A, E, T, [LL]: 6!/2! = 360."
+        },
+        {
+          "id": "e",
+          "pregunta": "GALLETA, sin que las dos L queden juntas.",
+          "respuesta": 900,
+          "pistas": [
+            "Calculá el total de ordenamientos de GALLETA y restá los casos con LL juntas."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 360,
+              "mensaje": "Ese número cuenta los casos con las dos L juntas."
+            },
+            {
+              "valor": 1260,
+              "mensaje": "Ese es el total sin imponer que las L queden separadas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "bloque",
+            "combinar"
+          ],
+          "explicacion": "Total 1260; con LL juntas 360. Entonces 1260 − 360 = 900."
+        },
+        {
+          "id": "f",
+          "pregunta": "PLANO, con la P y la L juntas.",
+          "respuesta": 48,
+          "pistas": [
+            "Pegá P y L en un bloque.",
+            "El bloque puede ser PL o LP."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 24,
+              "mensaje": "Te falta considerar los dos órdenes internos del bloque: PL y LP."
+            },
+            {
+              "valor": 12,
+              "mensaje": "Revisá cuántas unidades quedan después de formar el bloque."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "bloque"
+          ],
+          "explicacion": "4 unidades y 2 órdenes internos: 4!·2! = 48."
+        }
+      ]
+    },
+    {
+      "numero": "6",
+      "parte": "H",
+      "titulo": "Posiciones de vocales y consonantes",
+      "enunciado": "Usando todas las letras de cada palabra, ¿cuántos ordenamientos distintos cumplen la condición?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "SALIDA, alternando consonante y vocal.",
+          "respuesta": 36,
+          "pistas": [
+            "Hay tres consonantes y tres vocales, así que existen dos patrones posibles.",
+            "Las dos A son iguales entre sí."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 72,
+              "mensaje": "Trataste las dos A como si fueran distintas."
+            },
+            {
+              "valor": 18,
+              "mensaje": "Contaste un solo patrón de alternancia; también puede comenzar con vocal."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "letras",
+            "combinar"
+          ],
+          "explicacion": "2 patrones · 3! consonantes · (3!/2!) vocales = 2·6·3 = 36."
+        },
+        {
+          "id": "b",
+          "pregunta": "SALIDA, con las vocales en los mismos lugares que en la palabra original.",
+          "respuesta": 6,
+          "pistas": [
+            "Las vocales quedan exactamente donde están; solo se mueven las consonantes."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 18,
+              "mensaje": "Ese resultado permite intercambiar las vocales; acá sus posiciones y letras quedan fijas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "Solo se permutan S, L y D: 3! = 6."
+        },
+        {
+          "id": "c",
+          "pregunta": "SALIDA, con vocales en las posiciones de vocal, pudiendo intercambiarse entre sí.",
+          "respuesta": 18,
+          "pistas": [
+            "Las consonantes se ordenan en sus tres lugares.",
+            "Las vocales A, I, A se ordenan en los tres lugares de vocal teniendo en cuenta la repetición."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 36,
+              "mensaje": "Las dos A son iguales, por lo que las vocales no tienen 3! órdenes distintos."
+            },
+            {
+              "valor": 6,
+              "mensaje": "También hay que contar los posibles órdenes de las vocales."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial",
+            "letras",
+            "combinar"
+          ],
+          "explicacion": "3! consonantes · (3!/2!) vocales = 6·3 = 18."
+        },
+        {
+          "id": "d",
+          "pregunta": "GALLETA, que empiece y termine con vocal.",
+          "respuesta": 180,
+          "pistas": [
+            "Las vocales disponibles son A, A y E.",
+            "Separá en casos según las vocales elegidas para los dos extremos."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 360,
+              "mensaje": "Revisá las repeticiones: las dos L son iguales y, en algunos casos, también queda una A en el medio."
+            },
+            {
+              "valor": 60,
+              "mensaje": "Ese valor corresponde solo a uno de los casos posibles para los extremos."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "combinar"
+          ],
+          "explicacion": "Casos: AA deja E, G, L×2, T en el medio: 5!/2! = 60. AE y EA dejan A, G, L×2, T: 5!/2! = 60 cada uno. Total: 60+60+60 = 180."
+        }
+      ]
+    }
+  ]
+}
