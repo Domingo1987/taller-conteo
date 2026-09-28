@@ -1,0 +1,205 @@
+{
+  "titulo": "Práctico 5 — Restricciones — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "F",
+      "titulo": "Restricciones",
+      "enunciado": "Practicá bloques, complemento, posiciones fijas y casos.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Siete personas en fila, sin restricciones.",
+          "respuesta": 5040,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "7! = 5040."
+        },
+        {
+          "id": "b",
+          "pregunta": "Siete personas en fila, Ana y Bruno juntos.",
+          "respuesta": 1440,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Bloque AB/BA: 6!·2 = 1440."
+        },
+        {
+          "id": "c",
+          "pregunta": "Siete personas en fila, Ana y Bruno no juntos.",
+          "respuesta": 3600,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Complemento: 7!−6!·2 = 3600."
+        },
+        {
+          "id": "d",
+          "pregunta": "Números de 4 cifras sin repetir dígitos.",
+          "respuesta": 4536,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Primera cifra: 9 opciones; luego 9, 8 y 7."
+        },
+        {
+          "id": "e",
+          "pregunta": "Números de 4 cifras que terminan en 0 y no repiten dígitos.",
+          "respuesta": 504,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Fijado el 0 final: 9·8·7 = 504."
+        },
+        {
+          "id": "f",
+          "pregunta": "Números pares de 4 cifras sin repetir dígitos.",
+          "respuesta": 2296,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Por casos según la última cifra: total 2296."
+        },
+        {
+          "id": "g",
+          "pregunta": "Comisiones de 4 de un grupo con 7 de informática y 5 de datos, exactamente 2 de informática.",
+          "respuesta": 210,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "C(7,2)·C(5,2)=210."
+        },
+        {
+          "id": "h",
+          "pregunta": "Comisiones de 4 del mismo grupo, al menos 1 de datos.",
+          "respuesta": 460,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Complemento: C(12,4)−C(7,4)=460."
+        },
+        {
+          "id": "i",
+          "pregunta": "Ordenamientos de BANANA con las tres A juntas.",
+          "respuesta": 12,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Bloque AAA: [AAA], B, N, N → 4!/2!=12."
+        },
+        {
+          "id": "j",
+          "pregunta": "Ordenamientos de CAMINO alternando consonante y vocal.",
+          "respuesta": 72,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Dos patrones ·3!·3! = 72."
+        },
+        {
+          "id": "k",
+          "pregunta": "Ordenamientos de PLANEO con P y L juntas.",
+          "respuesta": 240,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Bloque PL/LP: 5!·2=240."
+        },
+        {
+          "id": "l",
+          "pregunta": "Ordenamientos de PLANEO con P y L separadas.",
+          "respuesta": 480,
+          "pistas": [
+            "Buscá si conviene fijar posiciones, formar un bloque, separar casos o usar complemento."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "casillas",
+            "combinar",
+            "letras"
+          ],
+          "explicacion": "Complemento: 6!−5!·2=480."
+        }
+      ]
+    }
+  ]
+}

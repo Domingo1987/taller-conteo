@@ -1,0 +1,193 @@
+{
+  "titulo": "Práctico 5 — Combinaciones — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "D",
+      "titulo": "Combinaciones",
+      "enunciado": "Elegí subconjuntos sin importar el orden.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "De 10 elementos distintos, ¿de cuántas maneras puede elegirse un comisión de 3 elementos si el orden no importa?",
+          "respuesta": 120,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(10,3) = 120."
+        },
+        {
+          "id": "b",
+          "pregunta": "De 12 elementos distintos, ¿de cuántas maneras puede elegirse un grupo de 4 elementos si el orden no importa?",
+          "respuesta": 495,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 11880,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(12,4) = 495."
+        },
+        {
+          "id": "c",
+          "pregunta": "De 15 elementos distintos, ¿de cuántas maneras puede elegirse un selección de 5 elementos si el orden no importa?",
+          "respuesta": 3003,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 360360,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(15,5) = 3003."
+        },
+        {
+          "id": "d",
+          "pregunta": "De 9 elementos distintos, ¿de cuántas maneras puede elegirse un pareja de 2 elementos si el orden no importa?",
+          "respuesta": 36,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 72,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(9,2) = 36."
+        },
+        {
+          "id": "e",
+          "pregunta": "De 14 elementos distintos, ¿de cuántas maneras puede elegirse un equipo de 6 elementos si el orden no importa?",
+          "respuesta": 3003,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 2162160,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(14,6) = 3003."
+        },
+        {
+          "id": "f",
+          "pregunta": "De 20 elementos distintos, ¿de cuántas maneras puede elegirse un comisión de 4 elementos si el orden no importa?",
+          "respuesta": 4845,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 116280,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(20,4) = 4845."
+        },
+        {
+          "id": "g",
+          "pregunta": "De 11 elementos distintos, ¿de cuántas maneras puede elegirse un subconjunto de 3 elementos si el orden no importa?",
+          "respuesta": 165,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 990,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(11,3) = 165."
+        },
+        {
+          "id": "h",
+          "pregunta": "De 16 elementos distintos, ¿de cuántas maneras puede elegirse un pareja de 2 elementos si el orden no importa?",
+          "respuesta": 120,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 240,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(16,2) = 120."
+        },
+        {
+          "id": "i",
+          "pregunta": "De 13 elementos distintos, ¿de cuántas maneras puede elegirse un grupo de 5 elementos si el orden no importa?",
+          "respuesta": 1287,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 154440,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(13,5) = 1287."
+        },
+        {
+          "id": "j",
+          "pregunta": "De 18 elementos distintos, ¿de cuántas maneras puede elegirse un selección de 6 elementos si el orden no importa?",
+          "respuesta": 18564,
+          "pistas": [
+            "Cambiar el orden de los mismos elegidos no genera un resultado nuevo."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 13366080,
+              "mensaje": "Ese valor cuenta distintos órdenes del mismo grupo."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Combinación: C(18,6) = 18564."
+        }
+      ]
+    }
+  ]
+}

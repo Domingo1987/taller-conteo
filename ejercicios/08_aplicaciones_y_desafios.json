@@ -1,0 +1,193 @@
+{
+  "titulo": "Práctico 5 — Aplicaciones y desafíos — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "I",
+      "titulo": "Aplicaciones y desafíos",
+      "enunciado": "Problemas variados del mismo tipo que los complementarios del práctico.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Con 9 letras distintas, palabras de 5 letras sin repetir.",
+          "respuesta": 15120,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "9P5=15120."
+        },
+        {
+          "id": "b",
+          "pregunta": "Con 9 letras distintas, palabras de 5 letras que comienzan con una letra fija.",
+          "respuesta": 1680,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "La primera queda fija: 8P4=1680."
+        },
+        {
+          "id": "c",
+          "pregunta": "Con 9 letras distintas, palabras de 5 letras que comienzan con M y terminan con O.",
+          "respuesta": 210,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "Dos extremos fijos: 7P3=210."
+        },
+        {
+          "id": "d",
+          "pregunta": "Matrículas con 2 vocales distintas y 3 cifras distintas, en ese orden.",
+          "respuesta": 14400,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "5P2·10P3=14400."
+        },
+        {
+          "id": "e",
+          "pregunta": "Sentar 4 personas distintas en 6 asientos distintos.",
+          "respuesta": 360,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "6P4=360."
+        },
+        {
+          "id": "f",
+          "pregunta": "Sentar esas 4 personas en 6 asientos, con un conductor fijo.",
+          "respuesta": 60,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "Conductor fijado; quedan 3 personas y 5 asientos: 5P3=60."
+        },
+        {
+          "id": "g",
+          "pregunta": "Elegir titulares: 1 de 3 goleros, 4 de 7 zagueros, 4 de 6 mediocampistas y 2 de 5 atacantes.",
+          "respuesta": 15750,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "Producto de combinaciones = 15750."
+        },
+        {
+          "id": "h",
+          "pregunta": "Torneo todos contra todos con 16 participantes, una partida por pareja.",
+          "respuesta": 120,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "Cada partida es una pareja: C(16,2)=120."
+        },
+        {
+          "id": "i",
+          "pregunta": "Si un todos-contra-todos produce 190 partidas, ¿cuántos participantes hay?",
+          "respuesta": 20,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "Resolver C(n,2)=190 da n=20."
+        },
+        {
+          "id": "j",
+          "pregunta": "Elegir 5 libros con exactamente 3 de Matemática entre 12 y 2 de Física entre 8.",
+          "respuesta": 6160,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "C(12,3)·C(8,2)=6160."
+        },
+        {
+          "id": "k",
+          "pregunta": "Con 9 números distintos, productos de 4 factores diferentes.",
+          "respuesta": 126,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "El orden de los factores no cambia el producto: C(9,4)=126."
+        },
+        {
+          "id": "l",
+          "pregunta": "De 14 cuentos distintos, elegir 6 para publicar sin importar el orden.",
+          "respuesta": 3003,
+          "pistas": [
+            "Traducí la situación a posiciones ordenadas o a una selección sin orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas",
+            "combinar",
+            "factorial"
+          ],
+          "explicacion": "C(14,6)=3003."
+        }
+      ]
+    }
+  ]
+}

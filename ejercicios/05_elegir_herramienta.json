@@ -1,0 +1,163 @@
+{
+  "titulo": "Práctico 5 — Elegir la herramienta adecuada — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "E",
+      "titulo": "Elegir la herramienta adecuada",
+      "enunciado": "Identificá el tipo de conteo y resolvé.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Elegir 4 estudiantes entre 11 para representar al grupo.",
+          "respuesta": 330,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Combinación. No hay cargos; el orden no importa. Resultado: 330."
+        },
+        {
+          "id": "b",
+          "pregunta": "Elegir presidente, secretario y tesorero entre 11 estudiantes.",
+          "respuesta": 990,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición. Los cargos son distintos. Resultado: 990."
+        },
+        {
+          "id": "c",
+          "pregunta": "Ordenar 8 personas en una fila.",
+          "respuesta": 40320,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Permutación. Se usan todos los elementos y el orden importa. Resultado: 40320."
+        },
+        {
+          "id": "d",
+          "pregunta": "Crear un código de longitud 4 con 7 símbolos permitiendo repetición.",
+          "respuesta": 2401,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo con repetición. Cada posición vuelve a tener 7 opciones. Resultado: 2401."
+        },
+        {
+          "id": "e",
+          "pregunta": "Crear un código de longitud 4 con 7 símbolos sin repetir.",
+          "respuesta": 840,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición. El orden importa y no se repite. Resultado: 840."
+        },
+        {
+          "id": "f",
+          "pregunta": "Formar una pareja entre 12 personas.",
+          "respuesta": 66,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Combinación. La pareja no tiene orden. Resultado: 66."
+        },
+        {
+          "id": "g",
+          "pregunta": "Asignar oro y plata entre 12 corredores.",
+          "respuesta": 132,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición. Oro y plata son puestos distintos. Resultado: 132."
+        },
+        {
+          "id": "h",
+          "pregunta": "Ordenar 6 libros diferentes.",
+          "respuesta": 720,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Permutación. Se usan los 6 libros. Resultado: 720."
+        },
+        {
+          "id": "i",
+          "pregunta": "Elegir 3 libros entre 9.",
+          "respuesta": 84,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Combinación. Solo importa cuáles se eligen. Resultado: 84."
+        },
+        {
+          "id": "j",
+          "pregunta": "Formar una cadena de 5 posiciones con 4 letras permitiendo repetición.",
+          "respuesta": 1024,
+          "pistas": [
+            "Preguntate: ¿se usan todos?, ¿importa el orden?, ¿se permite repetir?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo con repetición. Cada posición tiene 4 opciones. Resultado: 1024."
+        }
+      ]
+    }
+  ]
+}

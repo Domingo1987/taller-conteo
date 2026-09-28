@@ -1,0 +1,193 @@
+{
+  "titulo": "Práctico 5 — Arreglos con repetición — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "C",
+      "titulo": "Arreglos con repetición",
+      "enunciado": "En cada posición puede volver a utilizarse cualquier símbolo.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Hay 10 símbolos disponibles. ¿Cuántas posibilidades tiene un código de 4 dígitos si se permite repetir?",
+          "respuesta": 10000,
+          "pistas": [
+            "Cada una de las 4 posiciones vuelve a tener 10 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 5040,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 10^4 = 10000."
+        },
+        {
+          "id": "b",
+          "pregunta": "Hay 2 símbolos disponibles. ¿Cuántas posibilidades tiene un cadena binaria de longitud 10 si se permite repetir?",
+          "respuesta": 1024,
+          "pistas": [
+            "Cada una de las 10 posiciones vuelve a tener 2 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 0,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 2^10 = 1024."
+        },
+        {
+          "id": "c",
+          "pregunta": "Hay 5 símbolos disponibles. ¿Cuántas posibilidades tiene un contraseña de 6 posiciones si se permite repetir?",
+          "respuesta": 15625,
+          "pistas": [
+            "Cada una de las 6 posiciones vuelve a tener 5 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 0,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 5^6 = 15625."
+        },
+        {
+          "id": "d",
+          "pregunta": "Hay 7 símbolos disponibles. ¿Cuántas posibilidades tiene un código de 3 posiciones si se permite repetir?",
+          "respuesta": 343,
+          "pistas": [
+            "Cada una de las 3 posiciones vuelve a tener 7 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 210,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 7^3 = 343."
+        },
+        {
+          "id": "e",
+          "pregunta": "Hay 3 símbolos disponibles. ¿Cuántas posibilidades tiene un secuencia de 7 posiciones si se permite repetir?",
+          "respuesta": 2187,
+          "pistas": [
+            "Cada una de las 7 posiciones vuelve a tener 3 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 0,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 3^7 = 2187."
+        },
+        {
+          "id": "f",
+          "pregunta": "Hay 4 símbolos disponibles. ¿Cuántas posibilidades tiene un cadena de 8 letras si se permite repetir?",
+          "respuesta": 65536,
+          "pistas": [
+            "Cada una de las 8 posiciones vuelve a tener 4 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 0,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 4^8 = 65536."
+        },
+        {
+          "id": "g",
+          "pregunta": "Hay 6 símbolos disponibles. ¿Cuántas posibilidades tiene un clave de 5 posiciones si se permite repetir?",
+          "respuesta": 7776,
+          "pistas": [
+            "Cada una de las 5 posiciones vuelve a tener 6 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 6^5 = 7776."
+        },
+        {
+          "id": "h",
+          "pregunta": "Hay 8 símbolos disponibles. ¿Cuántas posibilidades tiene un código de 2 posiciones si se permite repetir?",
+          "respuesta": 64,
+          "pistas": [
+            "Cada una de las 2 posiciones vuelve a tener 8 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 56,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 8^2 = 64."
+        },
+        {
+          "id": "i",
+          "pregunta": "Hay 5 símbolos disponibles. ¿Cuántas posibilidades tiene un cadena de 5 posiciones si se permite repetir?",
+          "respuesta": 3125,
+          "pistas": [
+            "Cada una de las 5 posiciones vuelve a tener 5 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 5^5 = 3125."
+        },
+        {
+          "id": "j",
+          "pregunta": "Hay 2 símbolos disponibles. ¿Cuántas posibilidades tiene un cadena binaria de longitud 12 si se permite repetir?",
+          "respuesta": 4096,
+          "pistas": [
+            "Cada una de las 12 posiciones vuelve a tener 2 opciones."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 0,
+              "mensaje": "Ese razonamiento corresponde al caso sin repetición."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Arreglo con repetición: 2^12 = 4096."
+        }
+      ]
+    }
+  ]
+}

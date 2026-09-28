@@ -1,0 +1,188 @@
+{
+  "titulo": "Práctico 5 — Factoriales y permutaciones — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "A",
+      "titulo": "Factoriales y permutaciones",
+      "enunciado": "Calculá factoriales y ordenamientos completos.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "5!",
+          "respuesta": 120,
+          "pistas": [
+            "Desarrollá el factorial como producto descendente."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 25,
+              "mensaje": "5! no significa 5·5."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "5! = 120."
+        },
+        {
+          "id": "b",
+          "pregunta": "6!",
+          "respuesta": 720,
+          "pistas": [
+            "Desarrollá el factorial como producto descendente."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 36,
+              "mensaje": "6! no significa 6·6."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "6! = 720."
+        },
+        {
+          "id": "c",
+          "pregunta": "7!",
+          "respuesta": 5040,
+          "pistas": [
+            "Desarrollá el factorial como producto descendente."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 49,
+              "mensaje": "7! no significa 7·7."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "7! = 5 040."
+        },
+        {
+          "id": "d",
+          "pregunta": "8!",
+          "respuesta": 40320,
+          "pistas": [
+            "Desarrollá el factorial como producto descendente."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 64,
+              "mensaje": "8! no significa 8·8."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "8! = 40 320."
+        },
+        {
+          "id": "e",
+          "pregunta": "9!",
+          "respuesta": 362880,
+          "pistas": [
+            "Desarrollá el factorial como producto descendente."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 81,
+              "mensaje": "9! no significa 9·9."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "9! = 362 880."
+        },
+        {
+          "id": "f",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de LIBRE?",
+          "respuesta": 120,
+          "pistas": [
+            "Contá las letras y verificá si alguna se repite."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "letras",
+            "factorial"
+          ],
+          "explicacion": "5! = 120"
+        },
+        {
+          "id": "g",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de JARDIN?",
+          "respuesta": 720,
+          "pistas": [
+            "Contá las letras y verificá si alguna se repite."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "letras",
+            "factorial"
+          ],
+          "explicacion": "6! = 720"
+        },
+        {
+          "id": "h",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de ESCUELA?",
+          "respuesta": 2520,
+          "pistas": [
+            "Contá las letras y verificá si alguna se repite."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 5040,
+              "mensaje": "Ese valor trata todas las letras como si fueran distintas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "factorial"
+          ],
+          "explicacion": "Se descuentan repeticiones (E×2): 7!/2! = 2520."
+        },
+        {
+          "id": "i",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de TORRE?",
+          "respuesta": 60,
+          "pistas": [
+            "Contá las letras y verificá si alguna se repite."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Ese valor trata todas las letras como si fueran distintas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "factorial"
+          ],
+          "explicacion": "Se descuentan repeticiones (R×2): 5!/2! = 60."
+        },
+        {
+          "id": "j",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de ANANAS?",
+          "respuesta": 60,
+          "pistas": [
+            "Contá las letras y verificá si alguna se repite."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 720,
+              "mensaje": "Ese valor trata todas las letras como si fueran distintas."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "letras",
+            "factorial"
+          ],
+          "explicacion": "Se descuentan repeticiones (A×3, N×2): 6!/3!·2! = 60."
+        }
+      ]
+    }
+  ]
+}

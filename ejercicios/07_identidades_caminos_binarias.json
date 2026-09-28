@@ -1,0 +1,143 @@
+{
+  "titulo": "Práctico 5 — Identidades, caminos y cadenas binarias — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "G-H",
+      "titulo": "Identidades, caminos y cadenas binarias",
+      "enunciado": "Aplicá coeficientes binomiales a identidades y conteos de posiciones.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "C(10,3)",
+          "respuesta": 120,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Por simetría también es C(10,7). Resultado: 120."
+        },
+        {
+          "id": "b",
+          "pregunta": "C(12,2)",
+          "respuesta": 66,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Por simetría también es C(12,10). Resultado: 66."
+        },
+        {
+          "id": "c",
+          "pregunta": "C(8,3)=C(7,3)+C(7,2). ¿Cuál es el valor?",
+          "respuesta": 56,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Identidad de Pascal: 35+21=56. Resultado: 56."
+        },
+        {
+          "id": "d",
+          "pregunta": "C(10,4)=C(9,4)+C(9,3). ¿Cuál es el valor?",
+          "respuesta": 210,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Identidad de Pascal: 126+84=210. Resultado: 210."
+        },
+        {
+          "id": "e",
+          "pregunta": "Caminos mínimos con 5 pasos a la derecha y 3 arriba.",
+          "respuesta": 56,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Elegí las 3 posiciones de los pasos hacia arriba. Resultado: 56."
+        },
+        {
+          "id": "f",
+          "pregunta": "Caminos mínimos con 4 pasos a la derecha y 4 arriba.",
+          "respuesta": 70,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Elegí 4 posiciones entre 8. Resultado: 70."
+        },
+        {
+          "id": "g",
+          "pregunta": "Caminos mínimos con 7 pasos a la derecha y 3 arriba.",
+          "respuesta": 120,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Son 10 pasos totales; elegí 3 posiciones. Resultado: 120."
+        },
+        {
+          "id": "h",
+          "pregunta": "Cadenas binarias de longitud 8 con exactamente 3 unos.",
+          "respuesta": 56,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Elegí las 3 posiciones de los unos. Resultado: 56."
+        },
+        {
+          "id": "i",
+          "pregunta": "Cadenas binarias de longitud 10 con exactamente 4 unos.",
+          "respuesta": 210,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Elegí las 4 posiciones de los unos. Resultado: 210."
+        },
+        {
+          "id": "j",
+          "pregunta": "Cadenas binarias de longitud 12 con exactamente 2 unos.",
+          "respuesta": 66,
+          "pistas": [
+            "Representá el problema como una elección de posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Elegí las 2 posiciones de los unos. Resultado: 66."
+        }
+      ]
+    }
+  ]
+}

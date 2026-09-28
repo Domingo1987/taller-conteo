@@ -1,0 +1,203 @@
+{
+  "titulo": "Práctico 5 — Arreglos sin repetición — práctica intensiva",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "B",
+      "titulo": "Arreglos sin repetición",
+      "enunciado": "Resolvé situaciones donde se eligen y ordenan algunos elementos sin repetir.",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "Con 10 elementos distintos, ¿de cuántas maneras pueden ocuparse 3 posiciones distintas (cargos diferentes) sin repetir?",
+          "respuesta": 720,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 120,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 10P3 = 720."
+        },
+        {
+          "id": "b",
+          "pregunta": "Con 12 elementos distintos, ¿de cuántas maneras pueden ocuparse 2 posiciones distintas (delegado y suplente) sin repetir?",
+          "respuesta": 132,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 66,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 12P2 = 132."
+        },
+        {
+          "id": "c",
+          "pregunta": "Con 9 elementos distintos, ¿de cuántas maneras pueden ocuparse 4 posiciones distintas (primeros cuatro puestos) sin repetir?",
+          "respuesta": 3024,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 126,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 9P4 = 3024."
+        },
+        {
+          "id": "d",
+          "pregunta": "Con 7 elementos distintos, ¿de cuántas maneras pueden ocuparse 3 posiciones distintas (podio) sin repetir?",
+          "respuesta": 210,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 35,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 7P3 = 210."
+        },
+        {
+          "id": "e",
+          "pregunta": "Con 8 elementos distintos, ¿de cuántas maneras pueden ocuparse 5 posiciones distintas (cinco puestos) sin repetir?",
+          "respuesta": 6720,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 56,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 8P5 = 6720."
+        },
+        {
+          "id": "f",
+          "pregunta": "Con 6 elementos distintos, ¿de cuántas maneras pueden ocuparse 4 posiciones distintas (códigos de longitud 4) sin repetir?",
+          "respuesta": 360,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 15,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 6P4 = 360."
+        },
+        {
+          "id": "g",
+          "pregunta": "Con 9 elementos distintos, ¿de cuántas maneras pueden ocuparse 3 posiciones distintas (códigos de longitud 3) sin repetir?",
+          "respuesta": 504,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 84,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 9P3 = 504."
+        },
+        {
+          "id": "h",
+          "pregunta": "Con 10 elementos distintos, ¿de cuántas maneras pueden ocuparse 5 posiciones distintas (palabras de longitud 5) sin repetir?",
+          "respuesta": 30240,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 252,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 10P5 = 30240."
+        },
+        {
+          "id": "i",
+          "pregunta": "Con 11 elementos distintos, ¿de cuántas maneras pueden ocuparse 2 posiciones distintas (dos cargos) sin repetir?",
+          "respuesta": 110,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 55,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 11P2 = 110."
+        },
+        {
+          "id": "j",
+          "pregunta": "Con 8 elementos distintos, ¿de cuántas maneras pueden ocuparse 4 posiciones distintas (cuatro posiciones) sin repetir?",
+          "respuesta": 1680,
+          "pistas": [
+            "El orden importa y cada elemento usado deja de estar disponible."
+          ],
+          "errores_comunes": [
+            {
+              "valor": 70,
+              "mensaje": "Eso solo selecciona los elementos; no distingue las posiciones."
+            }
+          ],
+          "herramientas_sugeridas": [
+            "casillas",
+            "factorial"
+          ],
+          "explicacion": "Arreglo sin repetición: 8P4 = 1680."
+        }
+      ]
+    }
+  ]
+}
