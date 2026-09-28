@@ -932,6 +932,17 @@
         background: var(--surface2);
         resize: vertical;
       }
+      .dlg select {
+        border: 2px solid var(--line);
+        border-radius: 8px;
+        padding: 6px 10px;
+        background: var(--surface);
+        min-width: min(100%, 320px);
+      }
+      .dlg .subtle {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
       .dlg .row {
         display: flex;
         gap: 8px;
@@ -1101,6 +1112,14 @@
           spellcheck="false"
           aria-label="JSON de ejercicios"
         ></textarea>
+        <div class="row" id="presetWrap" hidden>
+          <label for="presetSelect">Cargar desde ejercicios/</label>
+          <select id="presetSelect" aria-label="Archivos en ejercicios">
+            <option value="">Elegí un archivo…</option>
+          </select>
+          <button class="btn" id="loadPreset">Cargar archivo</button>
+          <span class="subtle" id="presetInfo"></span>
+        </div>
         <div class="row">
           <button class="btn primary" id="loadJson">Cargar</button>
           <label class="btn" for="jsonFile">Elegir archivo…</label>
@@ -2443,11 +2462,135 @@
       const dlg = document.getElementById("loader"),
         ta = document.getElementById("jsonText"),
         jerr = document.getElementById("jsonErr");
+      const presetWrap = document.getElementById("presetWrap"),
+        presetSelect = document.getElementById("presetSelect"),
+        presetInfo = document.getElementById("presetInfo"),
+        loadPresetBtn = document.getElementById("loadPreset");
       const exampleText = () => JSON.stringify(EXAMPLE, null, 2);
+
+      function parseAndLoadJson(text, origin = "texto") {
+        let d;
+        try {
+          d = JSON.parse(text);
+        } catch (e) {
+          jerr.textContent = `El contenido de ${origin} no es JSON válido: ${e.message}`;
+          return false;
+        }
+        const errs = validate(d);
+        if (errs.length) {
+          jerr.textContent =
+            errs.slice(0, 8).join("\n") +
+            (errs.length > 8 ? `\n…y ${errs.length - 8} más.` : "");
+          return false;
+        }
+        ta.value = text;
+        loadData(d);
+        jerr.textContent = "";
+        return true;
+      }
+
+      function detectGitHubPagesRepo() {
+        const host = location.hostname.toLowerCase();
+        if (!host.endsWith(".github.io")) return null;
+        const owner = host.split(".")[0] || "";
+        const parts = location.pathname.split("/").filter(Boolean);
+        const repo = parts[0] || "";
+        if (!owner || !repo) return null;
+        return { owner, repo };
+      }
+
+      async function listFromGitHubRepo() {
+        const info = detectGitHubPagesRepo();
+        if (!info) return { files: [], label: "" };
+        const api = `https://api.github.com/repos/${encodeURIComponent(info.owner)}/${encodeURIComponent(info.repo)}/contents/ejercicios`;
+        try {
+          const res = await fetch(api, {
+            headers: { Accept: "application/vnd.github+json" },
+          });
+          if (!res.ok) return { files: [], label: "" };
+          const data = await res.json();
+          if (!Array.isArray(data)) return { files: [], label: "" };
+          const files = data
+            .filter((x) => x?.type === "file" && /\.json$/i.test(x.name || ""))
+            .map((x) => ({
+              name: x.name,
+              url: `./ejercicios/${encodeURIComponent(x.name)}`,
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name, "es"));
+          return {
+            files,
+            label: `Fuente: GitHub (${info.owner}/${info.repo})`,
+          };
+        } catch {
+          return { files: [], label: "" };
+        }
+      }
+
+      async function listFromLocalDirectory() {
+        const base = new URL("./ejercicios/", location.href);
+        try {
+          const res = await fetch(base.href);
+          if (!res.ok) return { files: [], label: "" };
+          const txt = await res.text();
+          const found = new Map();
+          for (const m of txt.matchAll(/href\s*=\s*["']([^"']+\.json)["']/gi)) {
+            const href = m[1]?.trim();
+            if (!href) continue;
+            const u = new URL(href, base);
+            const name = decodeURIComponent(u.pathname.split("/").pop() || "");
+            if (!/\.json$/i.test(name)) continue;
+            found.set(name, { name, url: u.href });
+          }
+          const files = [...found.values()].sort((a, b) =>
+            a.name.localeCompare(b.name, "es"),
+          );
+          return {
+            files,
+            label: files.length ? "Fuente: carpeta local ejercicios/" : "",
+          };
+        } catch {
+          return { files: [], label: "" };
+        }
+      }
+
+      let presetFiles = [];
+      let presetReq = 0;
+
+      async function refreshPresetPicker() {
+        const req = ++presetReq;
+        presetFiles = [];
+        presetWrap.hidden = true;
+        presetInfo.textContent = "";
+        presetSelect.innerHTML = '<option value="">Buscando archivos…</option>';
+        loadPresetBtn.disabled = true;
+
+        const gh = await listFromGitHubRepo();
+        const src = gh.files.length ? gh : await listFromLocalDirectory();
+        if (req !== presetReq) return;
+        if (!src.files.length) {
+          presetWrap.hidden = true;
+          return;
+        }
+
+        presetFiles = src.files;
+        presetWrap.hidden = false;
+        presetInfo.textContent = src.label;
+        presetSelect.innerHTML =
+          '<option value="">Elegí un archivo…</option>' +
+          presetFiles
+            .map(
+              (f, i) =>
+                `<option value="${i}">${esc(f.name.replace(/\.json$/i, ""))}</option>`,
+            )
+            .join("");
+        loadPresetBtn.disabled = false;
+      }
+
       document.getElementById("openLoader").onclick = () => {
         if (!ta.value) ta.value = exampleText();
         jerr.textContent = "";
         dlg.showModal();
+        refreshPresetPicker();
       };
       document.getElementById("closeLoader").onclick = () => dlg.close();
       document.getElementById("resetJson").onclick = () => {
@@ -2483,22 +2626,28 @@
         r.readAsText(f);
       };
       document.getElementById("loadJson").onclick = () => {
-        let d;
+        if (parseAndLoadJson(ta.value, "el texto pegado")) dlg.close();
+      };
+      loadPresetBtn.onclick = async () => {
+        const idx = Number(presetSelect.value);
+        if (!Number.isInteger(idx) || idx < 0 || idx >= presetFiles.length) {
+          jerr.textContent = "Elegí primero un archivo de la lista.";
+          return;
+        }
+        const f = presetFiles[idx];
+        loadPresetBtn.disabled = true;
+        jerr.textContent = "";
         try {
-          d = JSON.parse(ta.value);
+          const res = await fetch(f.url, { cache: "no-store" });
+          if (!res.ok)
+            throw new Error(`No se pudo leer ${f.name} (HTTP ${res.status}).`);
+          const txt = await res.text();
+          if (parseAndLoadJson(txt, f.name)) dlg.close();
         } catch (e) {
-          jerr.textContent = "El texto no es JSON válido: " + e.message;
-          return;
+          jerr.textContent = e.message || "No se pudo cargar el archivo.";
+        } finally {
+          loadPresetBtn.disabled = false;
         }
-        const errs = validate(d);
-        if (errs.length) {
-          jerr.textContent =
-            errs.slice(0, 8).join("\n") +
-            (errs.length > 8 ? `\n…y ${errs.length - 8} más.` : "");
-          return;
-        }
-        loadData(d);
-        dlg.close();
       };
 
       /* ---------- Answer bar height -> page padding ---------- */
