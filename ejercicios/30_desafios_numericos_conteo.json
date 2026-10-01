@@ -1,0 +1,299 @@
+{
+  "titulo": "Práctico 5 — 30 desafíos numéricos de conteo",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "I",
+      "titulo": "Nivel fácil",
+      "enunciado": "Resuelva cada desafío sin indicación previa sobre qué estrategia utilizar.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras pueden formarse con los dígitos 1, 2, 3, 4, 5 y 6 sin repetir?",
+          "respuesta": 120,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos códigos de 4 dígitos pueden formarse con 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 10000,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 9000,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 1, 2, 3, 4, 5, 6 y 7, sin repetir, si deben comenzar con 2?",
+          "respuesta": 120,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras, sin repetir dígitos, pueden formarse con 0, 1, 2, ..., 9 si deben terminar en 5?",
+          "respuesta": 64,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números pares de 4 cifras pueden formarse con 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 4500,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "facil",
+          "pregunta": "De 8 dígitos distintos, ¿cuántos grupos diferentes de 3 dígitos pueden elegirse si el orden no importa?",
+          "respuesta": 56,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse usando exactamente una vez los dígitos 1, 2, 3, 4, 5 y 6?",
+          "respuesta": 720,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos códigos de 5 cifras pueden formarse usando únicamente 1, 2, 3 y 4, si se permite repetir?",
+          "respuesta": 1024,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras distintas pueden formarse con los dígitos 1 al 9 si deben comenzar con un dígito impar?",
+          "respuesta": 280,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "parte": "II",
+      "titulo": "Nivel medio",
+      "enunciado": "Resuelva cada desafío identificando por su cuenta las restricciones relevantes.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 0 al 9 sin repetir?",
+          "respuesta": 4536,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 5?",
+          "respuesta": 952,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con 2 o con 7?",
+          "respuesta": 6048,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con un dígito impar y terminan en 0?",
+          "respuesta": 1680,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números pares de 4 cifras pueden formarse con los dígitos 0 al 9 sin repetir?",
+          "respuesta": 2296,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos códigos de 5 dígitos pueden formarse con 0, 1, 2, 3, 4, 5, 6 y 7, permitiendo repetición, si el primer y el último dígito deben ser iguales?",
+          "respuesta": 4096,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "medio",
+          "pregunta": "De los dígitos 0 al 9 se eligen 5 distintos. ¿Cuántas selecciones contienen exactamente 2 dígitos pares?",
+          "respuesta": 100,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con 3 y terminan con una cifra par?",
+          "respuesta": 8400,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras son múltiplos de 3 si se permite repetir dígitos?",
+          "respuesta": 3000,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, comienzan con 1 o con 2 y son múltiplos de 4?",
+          "respuesta": 238,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "parte": "III",
+      "titulo": "Nivel difícil",
+      "enunciado": "Resuelva cada desafío sin pistas sobre la estrategia de conteo.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con un dígito impar y son múltiplos de 5?",
+          "respuesta": 3024,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 3?",
+          "respuesta": 1548,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con 3 y son múltiplos de 3?",
+          "respuesta": 1008,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 4?",
+          "respuesta": 1120,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, son múltiplos de 6?",
+          "respuesta": 4596,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con una cifra par distinta de 0 y son múltiplos de 5?",
+          "respuesta": 13440,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, contienen obligatoriamente los dígitos 2 y 7?",
+          "respuesta": 6216,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, contienen exactamente 3 cifras pares?",
+          "respuesta": 64800,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con 1 o con 2 y son múltiplos de 4?",
+          "respuesta": 7140,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con una cifra impar y son múltiplos de 15?",
+          "respuesta": 5184,
+          "pistas": [],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    }
+  ]
+}
