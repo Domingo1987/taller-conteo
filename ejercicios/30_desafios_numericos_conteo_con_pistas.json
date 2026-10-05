@@ -1,0 +1,419 @@
+{
+  "titulo": "Práctico 5 — 30 desafíos numéricos de conteo",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "I",
+      "titulo": "Nivel fácil",
+      "enunciado": "Resuelva cada desafío sin indicación previa sobre qué estrategia utilizar.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras pueden formarse con los dígitos 1, 2, 3, 4, 5 y 6 sin repetir?",
+          "respuesta": 120,
+          "pistas": [
+            "Primero decide si el orden de las cifras cambia el número obtenido.",
+            "Como no se puede repetir, después de elegir una cifra quedan menos opciones disponibles.",
+            "Piensa en 3 posiciones: para la primera hay 6 opciones; luego disminuyen."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos códigos de 4 dígitos pueden formarse con 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 10000,
+          "pistas": [
+            "Es un código: el 0 puede ocupar la primera posición.",
+            "Como se permite repetir, cada posición vuelve a tener disponibles los 10 dígitos.",
+            "Cuenta las posibilidades de las 4 posiciones usando el principio multiplicativo."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 9000,
+          "pistas": [
+            "A diferencia de un código, un número de 4 cifras no puede comenzar con 0.",
+            "La repetición está permitida, así que la restricción del 0 solo afecta a la primera cifra.",
+            "Separa la elección de la primera cifra de las otras tres."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 1, 2, 3, 4, 5, 6 y 7, sin repetir, si deben comenzar con 2?",
+          "respuesta": 120,
+          "pistas": [
+            "La primera cifra ya está fijada: debe ser 2.",
+            "Quedan 6 dígitos disponibles para completar las otras 3 posiciones sin repetir.",
+            "El orden de esas tres cifras sí produce números distintos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras, sin repetir dígitos, pueden formarse con 0, 1, 2, ..., 9 si deben terminar en 5?",
+          "respuesta": 64,
+          "pistas": [
+            "La última cifra ya está fijada en 5.",
+            "La primera cifra no puede ser 0 ni 5.",
+            "Después de elegir la primera cifra, cuenta cuántas opciones quedan para la cifra central."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números pares de 4 cifras pueden formarse con 0, 1, 2, ..., 9 si se permite repetir?",
+          "respuesta": 4500,
+          "pistas": [
+            "Para que el número sea par, la última cifra debe ser 0, 2, 4, 6 u 8.",
+            "La primera cifra no puede ser 0.",
+            "Como se permite repetir, las posiciones intermedias mantienen 10 opciones cada una."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "facil",
+          "pregunta": "De 8 dígitos distintos, ¿cuántos grupos diferentes de 3 dígitos pueden elegirse si el orden no importa?",
+          "respuesta": 56,
+          "pistas": [
+            "Aquí se eligen 3 dígitos, pero el orden no importa.",
+            "Un grupo como {1,2,3} es el mismo aunque se nombre como {3,1,2}.",
+            "Busca una forma de contar selecciones sin orden."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse usando exactamente una vez los dígitos 1, 2, 3, 4, 5 y 6?",
+          "respuesta": 720,
+          "pistas": [
+            "Se utilizan exactamente una vez los 6 dígitos.",
+            "Cada nuevo lugar se ocupa con uno de los dígitos que todavía no fue usado.",
+            "Este caso usa todos los elementos disponibles."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos códigos de 5 cifras pueden formarse usando únicamente 1, 2, 3 y 4, si se permite repetir?",
+          "respuesta": 1024,
+          "pistas": [
+            "Hay 5 posiciones y en cada una se puede usar cualquiera de los 4 dígitos.",
+            "La repetición está permitida.",
+            "Las elecciones de las posiciones son independientes."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "facil",
+          "pregunta": "¿Cuántos números de 3 cifras distintas pueden formarse con los dígitos 1 al 9 si deben comenzar con un dígito impar?",
+          "respuesta": 280,
+          "pistas": [
+            "La primera cifra debe ser impar: identifica primero cuántas opciones hay para ella.",
+            "Una vez elegida la primera cifra, quedan 8 dígitos para la segunda y luego 7 para la tercera.",
+            "No se permiten repeticiones."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "parte": "II",
+      "titulo": "Nivel medio",
+      "enunciado": "Resuelva cada desafío identificando por su cuenta las restricciones relevantes.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras pueden formarse con los dígitos 0 al 9 sin repetir?",
+          "respuesta": 4536,
+          "pistas": [
+            "La primera cifra no puede ser 0.",
+            "Después de elegir la primera cifra, ya no puede volver a usarse.",
+            "Cuenta las opciones restantes para las otras tres posiciones sin repetir."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 5?",
+          "respuesta": 952,
+          "pistas": [
+            "Un múltiplo de 5 termina en 0 o en 5.",
+            "Conviene separar el problema en dos casos según la última cifra.",
+            "En cada caso recuerda que la primera cifra no puede ser 0 y que no se repiten dígitos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con 2 o con 7?",
+          "respuesta": 6048,
+          "pistas": [
+            "La primera cifra puede ser 2 o 7.",
+            "Una vez fijada esa cifra, quedan 9 dígitos para completar las otras 4 posiciones sin repetir.",
+            "Los dos casos no se superponen, así que puedes sumarlos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con un dígito impar y terminan en 0?",
+          "respuesta": 1680,
+          "pistas": [
+            "La última cifra está fijada en 0.",
+            "La primera cifra debe ser impar.",
+            "Después de fijar los extremos, completa las tres posiciones centrales con dígitos distintos de los ya usados."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números pares de 4 cifras pueden formarse con los dígitos 0 al 9 sin repetir?",
+          "respuesta": 2296,
+          "pistas": [
+            "Para que el número sea par, la última cifra debe ser par.",
+            "Separa el caso en que termina en 0 del caso en que termina en 2, 4, 6 u 8.",
+            "En cada caso controla que la primera cifra no sea 0 y que no haya repeticiones."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos códigos de 5 dígitos pueden formarse con 0, 1, 2, 3, 4, 5, 6 y 7, permitiendo repetición, si el primer y el último dígito deben ser iguales?",
+          "respuesta": 4096,
+          "pistas": [
+            "El primer y el último dígito deben coincidir.",
+            "Elige primero el valor común de esas dos posiciones.",
+            "Las tres posiciones del medio pueden elegirse libremente porque se permite repetir."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "medio",
+          "pregunta": "De los dígitos 0 al 9 se eligen 5 distintos. ¿Cuántas selecciones contienen exactamente 2 dígitos pares?",
+          "respuesta": 100,
+          "pistas": [
+            "Entre 0 y 9 hay 5 dígitos pares y 5 impares.",
+            "Se necesitan exactamente 2 pares, por lo que los otros 3 elegidos deben ser impares.",
+            "Como solo se seleccionan dígitos, el orden no importa."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con 3 y terminan con una cifra par?",
+          "respuesta": 8400,
+          "pistas": [
+            "La primera cifra está fijada en 3.",
+            "La última debe ser par y distinta de 3.",
+            "Una vez fijados los extremos, completa las cuatro posiciones centrales sin repetir los dígitos usados."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras son múltiplos de 3 si se permite repetir dígitos?",
+          "respuesta": 3000,
+          "pistas": [
+            "Un número es múltiplo de 3 cuando la suma de sus cifras es múltiplo de 3.",
+            "Como se permite repetir, conviene pensar en las clases de residuos 0, 1 y 2 módulo 3.",
+            "No olvides que la primera cifra no puede ser 0."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "medio",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, comienzan con 1 o con 2 y son múltiplos de 4?",
+          "respuesta": 238,
+          "pistas": [
+            "La primera cifra debe ser 1 o 2.",
+            "Un número es múltiplo de 4 si sus dos últimas cifras forman un múltiplo de 4.",
+            "Conviene organizar el conteo según las terminaciones posibles, cuidando no repetir dígitos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "parte": "III",
+      "titulo": "Nivel difícil",
+      "enunciado": "Resuelva cada desafío sin pistas sobre la estrategia de conteo.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con un dígito impar y son múltiplos de 5?",
+          "respuesta": 3024,
+          "pistas": [
+            "Un múltiplo de 5 debe terminar en 0 o en 5.",
+            "La primera cifra debe ser impar y no puede repetirse con la última.",
+            "Separa en los casos 'termina en 0' y 'termina en 5' antes de completar las cifras centrales."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 3?",
+          "respuesta": 1548,
+          "pistas": [
+            "La divisibilidad por 3 depende de la suma de las cifras.",
+            "Los dígitos 0 al 9 se reparten en tres clases según su resto al dividir entre 3.",
+            "Además de elegir 4 dígitos distintos con suma múltiplo de 3, recuerda que el 0 no puede quedar al comienzo."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, comienzan con 3 y son múltiplos de 3?",
+          "respuesta": 1008,
+          "pistas": [
+            "La primera cifra ya está fijada en 3.",
+            "Para que todo el número sea múltiplo de 3, la suma de las otras cuatro cifras debe completar un múltiplo de 3.",
+            "Trabaja con restos módulo 3 y luego ordena las cuatro cifras elegidas sin repetir."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 4 cifras, sin repetir dígitos, son múltiplos de 4?",
+          "respuesta": 1120,
+          "pistas": [
+            "Un número es múltiplo de 4 si sus dos últimas cifras forman un múltiplo de 4.",
+            "Primero estudia qué pares ordenados de dígitos distintos pueden aparecer al final.",
+            "Después completa las dos primeras posiciones, cuidando que la primera no sea 0."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, son múltiplos de 6?",
+          "respuesta": 4596,
+          "pistas": [
+            "Ser múltiplo de 6 significa ser múltiplo de 2 y de 3 a la vez.",
+            "La última cifra debe ser par.",
+            "Además, la suma de las cinco cifras debe ser múltiplo de 3; conviene combinar ambas restricciones por casos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con una cifra par distinta de 0 y son múltiplos de 5?",
+          "respuesta": 13440,
+          "pistas": [
+            "La primera cifra debe ser par, pero distinta de 0.",
+            "Un múltiplo de 5 termina en 0 o en 5.",
+            "Separa esos dos casos y controla la no repetición antes de completar las cuatro posiciones centrales."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 5 cifras, sin repetir dígitos, contienen obligatoriamente los dígitos 2 y 7?",
+          "respuesta": 6216,
+          "pistas": [
+            "Los dígitos 2 y 7 deben aparecer obligatoriamente.",
+            "Elige primero los otros 3 dígitos que acompañarán al 2 y al 7.",
+            "Luego cuenta los ordenamientos, corrigiendo aparte los que comenzarían con 0."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, contienen exactamente 3 cifras pares?",
+          "respuesta": 64800,
+          "pistas": [
+            "Entre 0 y 9 hay 5 cifras pares y 5 impares.",
+            "Debes usar exactamente 3 pares y 3 impares, sin repetir.",
+            "Después de elegir las 6 cifras, ordénalas teniendo en cuenta que un número de 6 cifras no puede comenzar con 0."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con 1 o con 2 y son múltiplos de 4?",
+          "respuesta": 7140,
+          "pistas": [
+            "La primera cifra puede ser 1 o 2.",
+            "La divisibilidad por 4 depende únicamente de las dos últimas cifras.",
+            "Organiza los finales posibles sin repetir dígitos y luego completa las posiciones del medio."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "dificil",
+          "pregunta": "¿Cuántos números de 6 cifras, sin repetir dígitos, comienzan con una cifra impar y son múltiplos de 15?",
+          "respuesta": 5184,
+          "pistas": [
+            "Un múltiplo de 15 debe ser múltiplo de 3 y de 5.",
+            "Por ser múltiplo de 5, la última cifra debe ser 0 o 5; por la condición inicial, la primera debe ser impar.",
+            "Separa casos según la última cifra y usa la suma de dígitos para imponer la divisibilidad por 3."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    }
+  ]
+}

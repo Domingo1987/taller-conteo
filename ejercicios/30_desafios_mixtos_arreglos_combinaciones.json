@@ -1,0 +1,390 @@
+{
+  "titulo": "Práctico 5 — Desafíos mixtos de arreglos y combinaciones",
+  "descripcion": "Ejercicios basados en los contenidos trabajados hasta el ejercicio 11 del Repartido 5. Se mezclan arreglos sin repetición, arreglos con repetición y combinaciones. La estrategia no se indica en el enunciado.",
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "I",
+      "titulo": "Nivel fácil",
+      "enunciado": "Resuelva cada desafío identificando si el orden importa y si se permite repetir.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "facil",
+          "pregunta": "Con 7 letras distintas, ¿cuántos códigos de longitud 3 pueden formarse sin repetir letras?",
+          "respuesta": 210,
+          "pistas": [
+            "Hay 7 elementos disponibles y se eligen 3 posiciones.",
+            "El orden de las letras cambia el código."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "facil",
+          "pregunta": "Con los dígitos 0, 1, 2, 3 y 4, ¿cuántos códigos de longitud 3 pueden formarse si se permite repetir?",
+          "respuesta": 125,
+          "pistas": [
+            "Cada una de las 3 posiciones puede usar cualquiera de los 5 dígitos.",
+            "Como es un código, puede comenzar con 0."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "facil",
+          "pregunta": "De un grupo de 9 estudiantes, ¿cuántas comisiones diferentes de 2 integrantes pueden formarse?",
+          "respuesta": 36,
+          "pistas": [
+            "En una comisión no hay cargos distintos.",
+            "Elegir a Ana y Bruno es lo mismo que elegir a Bruno y Ana."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "facil",
+          "pregunta": "En una competencia con 8 participantes, ¿de cuántas maneras pueden asignarse primer y segundo puesto?",
+          "respuesta": 56,
+          "pistas": [
+            "Los dos lugares son diferentes.",
+            "Una misma persona no puede ocupar ambos puestos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "facil",
+          "pregunta": "Con las letras A, B, C y D, ¿cuántas cadenas de longitud 5 pueden formarse si se permite repetir letras?",
+          "respuesta": 1024,
+          "pistas": [
+            "Hay 4 opciones para cada posición.",
+            "La misma letra puede aparecer varias veces."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "facil",
+          "pregunta": "De 10 libros distintos, ¿de cuántas maneras pueden elegirse 3 para llevar de viaje?",
+          "respuesta": 120,
+          "pistas": [
+            "Solo interesa cuáles libros se eligen.",
+            "El orden de elección no genera una selección nueva."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "facil",
+          "pregunta": "Con 6 símbolos distintos, ¿cuántos códigos de longitud 4 pueden formarse sin repetición?",
+          "respuesta": 360,
+          "pistas": [
+            "Se usan 4 posiciones entre 6 símbolos disponibles.",
+            "El orden sí importa."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "facil",
+          "pregunta": "¿Cuántas cadenas binarias de longitud 6 existen?",
+          "respuesta": 64,
+          "pistas": [
+            "En cada posición hay 2 posibilidades.",
+            "Los símbolos pueden repetirse."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "facil",
+          "pregunta": "En un grupo de 8 personas, ¿cuántos grupos diferentes de 3 personas pueden formarse?",
+          "respuesta": 56,
+          "pistas": [
+            "No hay cargos ni posiciones diferentes.",
+            "Importa quiénes integran el grupo, no el orden."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "facil",
+          "pregunta": "De 9 estudiantes se eligen presidente, secretario y tesorero. ¿Cuántas elecciones distintas son posibles si nadie puede ocupar más de un cargo?",
+          "respuesta": 504,
+          "pistas": [
+            "Los cargos son distintos.",
+            "No se permite repetir estudiante."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "parte": "II",
+      "titulo": "Nivel medio",
+      "enunciado": "Resuelva cada desafío. Los tipos de conteo aparecen mezclados.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "medio",
+          "pregunta": "Con 9 dígitos distintos, ¿cuántos códigos de longitud 5 pueden formarse sin repetir?",
+          "respuesta": 15120,
+          "pistas": [
+            "Hay 9 disponibles y 5 posiciones.",
+            "Dos códigos con los mismos dígitos en distinto orden son diferentes."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "medio",
+          "pregunta": "Con 6 letras distintas, ¿cuántas contraseñas de longitud 7 pueden formarse si se permite repetir letras?",
+          "respuesta": 279936,
+          "pistas": [
+            "La longitud puede ser mayor que la cantidad de letras disponibles porque se permite repetir.",
+            "Cada posición tiene 6 opciones."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "medio",
+          "pregunta": "De 12 estudiantes, ¿cuántas comisiones distintas de 4 integrantes pueden formarse?",
+          "respuesta": 495,
+          "pistas": [
+            "Todos los integrantes tienen el mismo papel.",
+            "Una comisión no cambia si se nombran sus integrantes en otro orden."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "medio",
+          "pregunta": "En una carrera con 11 participantes, ¿de cuántas maneras pueden asignarse los primeros 4 puestos?",
+          "respuesta": 7920,
+          "pistas": [
+            "Primer, segundo, tercer y cuarto puesto son posiciones distintas.",
+            "Un participante no puede aparecer dos veces."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "medio",
+          "pregunta": "Con los símbolos A, B, C, D y E, ¿cuántas cadenas de longitud 6 pueden formarse permitiendo repetición?",
+          "respuesta": 15625,
+          "pistas": [
+            "Cada posición puede usar cualquiera de los 5 símbolos.",
+            "No se elimina una opción después de usarla."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "medio",
+          "pregunta": "De 15 libros diferentes, ¿cuántas selecciones de 5 libros pueden hacerse?",
+          "respuesta": 3003,
+          "pistas": [
+            "Es una selección sin posiciones.",
+            "El orden no importa."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "medio",
+          "pregunta": "Con 10 símbolos diferentes, ¿cuántos códigos de longitud 4 pueden formarse sin repetir símbolos?",
+          "respuesta": 5040,
+          "pistas": [
+            "Se llenan 4 posiciones con símbolos distintos.",
+            "Después de elegir un símbolo quedan menos disponibles."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "medio",
+          "pregunta": "Una clave tiene 5 posiciones y en cada una puede colocarse cualquiera de 8 símbolos. ¿Cuántas claves diferentes existen si se permite repetir?",
+          "respuesta": 32768,
+          "pistas": [
+            "Las 5 posiciones son independientes.",
+            "En cada posición vuelven a estar disponibles los 8 símbolos."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "medio",
+          "pregunta": "De 14 personas, ¿cuántas parejas diferentes pueden formarse?",
+          "respuesta": 91,
+          "pistas": [
+            "La pareja formada por A y B no es distinta de la formada por B y A.",
+            "Se eligen 2 de 14."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "medio",
+          "pregunta": "En una clase de 13 estudiantes se asignan cuatro cargos distintos: delegado, subdelegado, secretario y tesorero. ¿Cuántas asignaciones son posibles si una persona no puede ocupar más de un cargo?",
+          "respuesta": 17160,
+          "pistas": [
+            "Los cuatro cargos son diferentes.",
+            "La selección es ordenada y sin repetición."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "parte": "III",
+      "titulo": "Nivel difícil",
+      "enunciado": "Resuelva los desafíos distinguiendo cuidadosamente entre orden, repetición y selección.",
+      "items": [
+        {
+          "id": "a",
+          "nivel": "dificil",
+          "pregunta": "Con 12 símbolos distintos, ¿cuántos códigos de longitud 7 pueden formarse sin repetir símbolos?",
+          "respuesta": 3991680,
+          "pistas": [
+            "No se usan todos los símbolos disponibles.",
+            "Importa qué símbolos aparecen y también en qué orden."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "b",
+          "nivel": "dificil",
+          "pregunta": "Una contraseña tiene 8 posiciones y se construye con 7 caracteres disponibles. Si se permite repetir, ¿cuántas contraseñas distintas pueden formarse?",
+          "respuesta": 5764801,
+          "pistas": [
+            "Que haya más posiciones que caracteres disponibles no es un problema.",
+            "Cada una de las 8 posiciones tiene 7 opciones."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "c",
+          "nivel": "dificil",
+          "pregunta": "De un grupo de 18 estudiantes, ¿cuántas comisiones diferentes de 6 integrantes pueden formarse?",
+          "respuesta": 18564,
+          "pistas": [
+            "Todos los integrantes cumplen el mismo papel.",
+            "El orden no genera una comisión nueva."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "d",
+          "nivel": "dificil",
+          "pregunta": "En una competencia con 14 participantes, ¿de cuántas formas pueden asignarse los primeros 6 puestos?",
+          "respuesta": 2162160,
+          "pistas": [
+            "Cada puesto es diferente.",
+            "No puede repetirse un participante."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "e",
+          "nivel": "dificil",
+          "pregunta": "Con los dígitos 0, 1, 2, 3, 4 y 5, ¿cuántos códigos de longitud 9 pueden formarse si se permite repetir?",
+          "respuesta": 10077696,
+          "pistas": [
+            "Es un código, por lo que el 0 puede ocupar cualquier posición.",
+            "Cada posición tiene 6 posibilidades."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "f",
+          "nivel": "dificil",
+          "pregunta": "De 20 libros distintos, ¿cuántas selecciones diferentes de 8 libros pueden realizarse?",
+          "respuesta": 125970,
+          "pistas": [
+            "Solo interesa el conjunto de libros elegidos.",
+            "No hay posiciones ni orden interno."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "g",
+          "nivel": "dificil",
+          "pregunta": "Con 13 letras distintas, ¿cuántas palabras de longitud 6 pueden formarse sin repetir letras?",
+          "respuesta": 1235520,
+          "pistas": [
+            "Aunque las palabras no tengan sentido, el orden de las letras importa.",
+            "Cada letra usada deja de estar disponible."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "h",
+          "nivel": "dificil",
+          "pregunta": "Una identificación tiene 7 posiciones y cada posición puede contener cualquiera de 9 símbolos. ¿Cuántas identificaciones existen si se permite repetir símbolos?",
+          "respuesta": 4782969,
+          "pistas": [
+            "Las elecciones de las posiciones son independientes.",
+            "Un símbolo puede aparecer varias veces."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "i",
+          "nivel": "dificil",
+          "pregunta": "En un grupo de 16 personas, ¿cuántos equipos diferentes de 7 integrantes pueden formarse?",
+          "respuesta": 11440,
+          "pistas": [
+            "No hay cargos dentro del equipo.",
+            "Cambiar el orden en que se nombran las personas no cambia el equipo."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        },
+        {
+          "id": "j",
+          "nivel": "dificil",
+          "pregunta": "De 17 candidatos deben asignarse 5 cargos distintos. ¿Cuántas asignaciones son posibles si cada candidato puede ocupar como máximo un cargo?",
+          "respuesta": 742560,
+          "pistas": [
+            "Los cargos hacen que el orden importe.",
+            "Después de asignar un cargo queda un candidato menos disponible."
+          ],
+          "errores_comunes": [],
+          "explicacion": ""
+        }
+      ]
+    }
+  ]
+}
