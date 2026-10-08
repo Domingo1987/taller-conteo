@@ -1,0 +1,685 @@
+{
+  "titulo": "Practico 4 y 5 - Desafíos mixtos de conteo, arreglos y combinaciones",
+  "dificultad": "media",
+  "objetivo": "Practicar la identificación de la estrategia adecuada antes de calcular, combinando principio multiplicativo, principio aditivo, complemento, inclusión-exclusión, arreglos, permutaciones, combinaciones, repetición y restricciones simples.",
+  "herramientas_sugeridas": [
+    "factorial",
+    "casillas",
+    "letras",
+    "bloque",
+    "combinar"
+  ],
+  "ejercicios": [
+    {
+      "numero": "1",
+      "parte": "A",
+      "titulo": "Arreglos sin repetición",
+      "enunciado": "Con las letras A, B, C, D, E y F se quieren formar códigos de 4 letras sin repetir. ¿Cuántos códigos diferentes pueden formarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos códigos diferentes de 4 letras pueden formarse sin repetir letras?",
+          "respuesta": 360,
+          "pistas": [
+            "El código tiene posiciones distintas: importa qué letra queda en cada posición.",
+            "Pensá cuántas opciones quedan para cada casilla."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 6 opciones para la primera posición, 5 para la segunda, 4 para la tercera y 3 para la cuarta. Entonces 6 × 5 × 4 × 3 = 360."
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "parte": "A",
+      "titulo": "Arreglos con repetición",
+      "enunciado": "Con las letras A, B, C y D se forman códigos de 5 letras permitiendo repetir letras. ¿Cuántos códigos diferentes existen?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos códigos diferentes de 5 letras pueden formarse permitiendo repetir letras?",
+          "respuesta": 1024,
+          "pistas": [
+            "Al permitir repetición, cada posición vuelve a tener la misma cantidad de opciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Cada una de las 5 posiciones tiene 4 opciones. Por el principio multiplicativo: 4 × 4 × 4 × 4 × 4 = 4⁵ = 1024."
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "parte": "A",
+      "titulo": "Combinaciones",
+      "enunciado": "De un grupo de 12 estudiantes se deben elegir 4 para formar una comisión. ¿Cuántas comisiones diferentes pueden formarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas comisiones diferentes de 4 estudiantes pueden formarse?",
+          "respuesta": 495,
+          "pistas": [
+            "Una comisión formada por las mismas cuatro personas es la misma comisión sin importar el orden."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Como el orden no importa, se usa una combinación: C(12,4) = 495."
+        }
+      ]
+    },
+    {
+      "numero": "4",
+      "parte": "A",
+      "titulo": "Arreglos versus combinaciones",
+      "enunciado": "De 12 estudiantes se deben elegir presidente, secretario y tesorero. ¿Cuántas elecciones diferentes son posibles?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas elecciones diferentes de presidente, secretario y tesorero pueden hacerse?",
+          "respuesta": 1320,
+          "pistas": [
+            "Comparalo mentalmente con el ejercicio anterior.",
+            "Acá no alcanza con elegir las personas: hay que asignar cargos diferentes."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 12 opciones para presidente, 11 para secretario y 10 para tesorero. Entonces 12 × 11 × 10 = 1320."
+        }
+      ]
+    },
+    {
+      "numero": "5",
+      "parte": "A",
+      "titulo": "Permutación simple",
+      "enunciado": "Seis libros distintos deben colocarse en una repisa. ¿De cuántas maneras pueden ordenarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿De cuántas maneras pueden ordenarse los seis libros?",
+          "respuesta": 720,
+          "pistas": [
+            "Usás todos los objetos y cada uno ocupa una posición diferente.",
+            "Pensá cuántas opciones hay para la primera, segunda, tercera, etc."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "Como se ordenan los 6 libros distintos, se usa una permutación simple: 6! = 720."
+        }
+      ]
+    },
+    {
+      "numero": "6",
+      "parte": "A",
+      "titulo": "Números y restricciones",
+      "enunciado": "¿Cuántos números de 4 cifras se pueden formar con los dígitos 1, 2, 3, 4, 5 y 6 sin repetir dígitos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos números de 4 cifras sin repetir pueden formarse con los dígitos 1, 2, 3, 4, 5 y 6?",
+          "respuesta": 360,
+          "pistas": [
+            "No estás ordenando los seis dígitos completos: elegís y ordenás solamente cuatro.",
+            "Hay que distinguir esto de una permutación de 6 elementos."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 6 opciones para la primera cifra, 5 para la segunda, 4 para la tercera y 3 para la cuarta: 6 × 5 × 4 × 3 = 360."
+        }
+      ]
+    },
+    {
+      "numero": "7",
+      "parte": "A",
+      "titulo": "Números con restricción",
+      "enunciado": "¿Cuántos números de 4 cifras se pueden formar con los dígitos 0, 1, 2, 3, 4 y 5 sin repetir dígitos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos números de 4 cifras sin repetir pueden formarse con 0, 1, 2, 3, 4 y 5?",
+          "respuesta": 300,
+          "pistas": [
+            "El 0 puede aparecer, pero no puede ocupar la primera posición.",
+            "Separá esa posición de las demás."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Para la primera posición hay 5 opciones distintas de 0. Luego quedan 5, 4 y 3 opciones: 5 × 5 × 4 × 3 = 300."
+        }
+      ]
+    },
+    {
+      "numero": "8",
+      "parte": "A",
+      "titulo": "Última posición",
+      "enunciado": "Con los dígitos 0, 1, 2, 3, 4 y 5, ¿cuántos números pares de 4 cifras pueden formarse sin repetir dígitos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos números pares de 4 cifras pueden formarse sin repetir dígitos?",
+          "respuesta": 156,
+          "pistas": [
+            "Para que sea par, mirá primero la última posición.",
+            "Después resolvé las posiciones restantes teniendo en cuenta que el primer dígito no puede ser 0."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Se separa según la última cifra. Si termina en 0, hay 5 × 4 × 3 = 60 posibilidades. Si termina en 2 o 4, hay 2 casos y para cada uno 4 × 4 × 3 = 48 posibilidades. Total: 60 + 2 × 48 = 156."
+        }
+      ]
+    },
+    {
+      "numero": "9",
+      "parte": "A",
+      "titulo": "Posición fija",
+      "enunciado": "Con las letras A, B, C, D, E y F se forman palabras de 4 letras sin repetir. ¿Cuántas empiezan con A?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas palabras de 4 letras sin repetir empiezan con A?",
+          "respuesta": 60,
+          "pistas": [
+            "Si la primera posición ya está determinada, no la cuentes como una elección.",
+            "Concentrate en las posiciones que quedan."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "La primera posición está fija en A. Quedan 5 × 4 × 3 posibilidades: 60."
+        }
+      ]
+    },
+    {
+      "numero": "10",
+      "parte": "A",
+      "titulo": "Primera y última posición",
+      "enunciado": "Con las letras A, B, C, D, E y F se forman palabras de 4 letras sin repetir. ¿Cuántas empiezan con A y terminan con F?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas palabras de 4 letras sin repetir empiezan con A y terminan con F?",
+          "respuesta": 12,
+          "pistas": [
+            "Primero fijá las dos posiciones indicadas.",
+            "Después preguntate qué queda disponible para las posiciones centrales."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "A y F ya están fijadas. Para las dos posiciones centrales quedan 4 opciones y luego 3: 4 × 3 = 12."
+        }
+      ]
+    },
+    {
+      "numero": "11",
+      "parte": "B",
+      "titulo": "Bloque",
+      "enunciado": "Seis personas distintas se forman en una fila. ¿De cuántas maneras pueden hacerlo si Ana y Bruno deben quedar juntos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿De cuántas maneras pueden formarse si Ana y Bruno deben quedar juntos?",
+          "respuesta": 240,
+          "pistas": [
+            "Tratálos como si fueran un único objeto.",
+            "Dentro de ese bloque todavía pueden intercambiar sus posiciones."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque",
+            "factorial"
+          ],
+          "explicacion": "Ana y Bruno forman un bloque, junto con las otras 4 personas hay 5 objetos: 5! formas. Dentro del bloque pueden estar AB o BA: 2 × 5! = 240."
+        }
+      ]
+    },
+    {
+      "numero": "12",
+      "parte": "B",
+      "titulo": "Complemento",
+      "enunciado": "Seis personas distintas se forman en una fila. ¿De cuántas maneras pueden hacerlo si Ana y Bruno NO deben quedar juntos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿De cuántas maneras pueden formarse si Ana y Bruno no deben quedar juntos?",
+          "respuesta": 480,
+          "pistas": [
+            "Contar directamente puede ser incómodo.",
+            "Pensá en todas las filas posibles y restá las que tienen a Ana y Bruno juntos."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial",
+            "bloque"
+          ],
+          "explicacion": "Hay 6! = 720 filas en total. Las que tienen a Ana y Bruno juntos son 240. Entonces 720 − 240 = 480."
+        }
+      ]
+    },
+    {
+      "numero": "13",
+      "parte": "B",
+      "titulo": "Letras repetidas",
+      "enunciado": "¿Cuántos ordenamientos distintos pueden formarse con las letras de la palabra CASA?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de CASA?",
+          "respuesta": 12,
+          "pistas": [
+            "No todas las letras son distintas.",
+            "Si intercambiás las dos A, ¿obtenés una palabra nueva?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "Hay 4 letras y la A se repite 2 veces. Por eso se calcula 4! / 2! = 12."
+        }
+      ]
+    },
+    {
+      "numero": "14",
+      "parte": "B",
+      "titulo": "Letras repetidas",
+      "enunciado": "¿Cuántos ordenamientos distintos pueden formarse con las letras de la palabra BANANA?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse con las letras de BANANA?",
+          "respuesta": 60,
+          "pistas": [
+            "Contá primero cuántas letras hay en total.",
+            "Luego identificá qué letras se repiten y cuántas veces."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "factorial"
+          ],
+          "explicacion": "BANANA tiene 6 letras: A aparece 3 veces y N aparece 2 veces. Entonces 6! / (3! × 2!) = 60."
+        }
+      ]
+    },
+    {
+      "numero": "15",
+      "parte": "C",
+      "titulo": "Combinación con restricción",
+      "enunciado": "En un grupo hay 7 estudiantes de informática y 5 de datos. Se quiere formar una comisión de 4 personas con exactamente 2 estudiantes de informática. ¿Cuántas comisiones pueden formarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas comisiones de 4 personas tienen exactamente 2 estudiantes de informática?",
+          "respuesta": 210,
+          "pistas": [
+            "La condición 'exactamente 2' permite separar la elección en dos grupos.",
+            "Elegí 2 de informática y 2 de datos."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Se eligen 2 de los 7 estudiantes de informática y 2 de los 5 de datos: C(7,2) × C(5,2) = 21 × 10 = 210."
+        }
+      ]
+    },
+    {
+      "numero": "16",
+      "parte": "C",
+      "titulo": "Combinación con complemento",
+      "enunciado": "En un grupo hay 8 estudiantes de informática y 5 de datos. ¿Cuántas comisiones de 4 personas tienen al menos un estudiante de datos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas comisiones de 4 personas tienen al menos un estudiante de datos?",
+          "respuesta": 1000,
+          "pistas": [
+            "‘Al menos uno’ suele ser una señal para pensar en el complemento.",
+            "¿Qué significa que no haya ningún estudiante de datos?"
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Hay C(13,4) comisiones en total. Las que no tienen estudiantes de datos son C(8,4). Entonces C(13,4) − C(8,4) = 715 − 70 = 645."
+        }
+      ]
+    },
+    {
+      "numero": "17",
+      "parte": "C",
+      "titulo": "Casos",
+      "enunciado": "Con los dígitos 1, 2, 3, 4 y 5, ¿cuántos números de 3 cifras sin repetir son pares?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos números de 3 cifras sin repetir son pares?",
+          "respuesta": 24,
+          "pistas": [
+            "La condición de paridad afecta principalmente a la última posición.",
+            "Separá los casos posibles para esa posición."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "La última cifra debe ser 2 o 4. Hay 2 opciones para ella, luego 4 para la primera posición y 3 para la segunda: 2 × 4 × 3 = 24."
+        }
+      ]
+    },
+    {
+      "numero": "18",
+      "parte": "C",
+      "titulo": "Casos y restricción inicial",
+      "enunciado": "Con los dígitos 0, 1, 2, 3, 4 y 5, ¿cuántos números de 3 cifras sin repetir son pares?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos números de 3 cifras sin repetir son pares?",
+          "respuesta": 52,
+          "pistas": [
+            "El 0 puede ser última cifra, pero no primera.",
+            "Conviene separar según la última cifra."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Si termina en 0, hay 5 × 4 = 20 posibilidades. Si termina en 2 o 4, hay 2 casos y para cada uno 4 × 4 = 16 posibilidades. Total: 20 + 32 = 52."
+        }
+      ]
+    },
+    {
+      "numero": "19",
+      "parte": "D",
+      "titulo": "Principio multiplicativo",
+      "enunciado": "Una contraseña tiene 2 letras seguidas de 3 dígitos. Las letras pueden repetirse y los dígitos también. ¿Cuántas contraseñas diferentes pueden formarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas contraseñas diferentes pueden formarse?",
+          "respuesta": 676000,
+          "pistas": [
+            "Pensá en cinco casillas.",
+            "Las primeras dos tienen una cantidad de opciones y las últimas tres otra."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Tomando 26 letras y 10 dígitos, hay 26 × 26 × 10 × 10 × 10 = 676000 contraseñas."
+        }
+      ]
+    },
+    {
+      "numero": "20",
+      "parte": "D",
+      "titulo": "Principio multiplicativo con restricción",
+      "enunciado": "Una contraseña tiene 3 letras seguidas de 2 dígitos. Las letras no pueden repetirse, pero los dígitos sí. ¿Cuántas contraseñas pueden formarse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas contraseñas pueden formarse?",
+          "respuesta": 156000,
+          "pistas": [
+            "No todas las casillas funcionan igual.",
+            "En las letras, las opciones disminuyen; en los dígitos, se mantienen."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Para las letras hay 26 × 25 × 24 posibilidades. Para los dígitos hay 10 × 10. Entonces 26 × 25 × 24 × 10 × 10 = 156000."
+        }
+      ]
+    },
+    {
+      "numero": "21",
+      "parte": "E",
+      "titulo": "Inclusión-exclusión",
+      "enunciado": "En un grupo de 30 estudiantes, 18 estudian programación, 15 estudian matemática discreta y 7 estudian ambas. ¿Cuántos estudian al menos una de las dos materias?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos estudiantes estudian al menos una de las dos materias?",
+          "respuesta": 26,
+          "pistas": [
+            "Si sumás directamente los dos grupos, los que están en ambas materias quedan contados dos veces."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Por inclusión-exclusión: 18 + 15 − 7 = 26."
+        }
+      ]
+    },
+    {
+      "numero": "22",
+      "parte": "E",
+      "titulo": "Inclusión-exclusión y complemento",
+      "enunciado": "En un grupo de 30 estudiantes, 18 estudian programación, 15 estudian matemática discreta y 7 estudian ambas. ¿Cuántos no estudian ninguna de las dos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos estudiantes no estudian ninguna de las dos materias?",
+          "respuesta": 4,
+          "pistas": [
+            "Primero encontrá cuántos estudian al menos una.",
+            "Después usá el total del grupo."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "26 estudiantes estudian al menos una materia. Por lo tanto, 30 − 26 = 4 no estudian ninguna."
+        }
+      ]
+    },
+    {
+      "numero": "23",
+      "parte": "E",
+      "titulo": "Combinación y orden",
+      "enunciado": "De 9 personas se quieren elegir 3 para representar al grupo. ¿Cuántas elecciones diferentes hay? ¿Y cuántas habría si las tres personas ocuparan los cargos de presidente, secretario y tesorero?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas elecciones diferentes hay si solo importa qué tres personas son elegidas?",
+          "respuesta": 84,
+          "pistas": [
+            "El orden no importa cuando solo se eligen las personas."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Se eligen 3 personas de 9 sin importar el orden: C(9,3) = 84."
+        },
+        {
+          "id": "b",
+          "pregunta": "¿Cuántas elecciones habría si las tres personas ocuparan cargos de presidente, secretario y tesorero?",
+          "respuesta": 504,
+          "pistas": [
+            "Ahora el orden importa porque los cargos son diferentes."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 9 opciones para presidente, 8 para secretario y 7 para tesorero: 9 × 8 × 7 = 504."
+        }
+      ]
+    },
+    {
+      "numero": "24",
+      "parte": "F",
+      "titulo": "Bloque con letras",
+      "enunciado": "¿Cuántos ordenamientos distintos de las letras de la palabra MESA pueden formarse si M y E deben quedar juntas?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse si M y E deben quedar juntas?",
+          "respuesta": 12,
+          "pistas": [
+            "Convertí M y E en un bloque.",
+            "Dentro del bloque pueden aparecer en dos órdenes."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque"
+          ],
+          "explicacion": "El bloque ME/EM y las letras S y A forman 3 objetos. Hay 3! formas de ordenarlos y 2 formas dentro del bloque: 3! × 2 = 12."
+        }
+      ]
+    },
+    {
+      "numero": "25",
+      "parte": "F",
+      "titulo": "Bloque con letras repetidas",
+      "enunciado": "¿Cuántos ordenamientos distintos de las letras de BANANA pueden formarse si las tres letras A deben quedar juntas?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos ordenamientos distintos pueden formarse si las tres A deben quedar juntas?",
+          "respuesta": 12,
+          "pistas": [
+            "Las tres A pueden tratarse como un único bloque.",
+            "Después tenés que ordenar ese bloque junto con las demás letras, teniendo presente que algunas se repiten."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "bloque"
+          ],
+          "explicacion": "Tratando AAA como un bloque, quedan cuatro objetos: AAA, B, N y N. Como las dos N son iguales, hay 4! / 2! = 12 ordenamientos."
+        }
+      ]
+    },
+    {
+      "numero": "26",
+      "parte": "F",
+      "titulo": "Elección y orden",
+      "enunciado": "De 10 libros distintos se quieren seleccionar 4 y colocarlos en una repisa. ¿De cuántas maneras puede hacerse?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿De cuántas maneras pueden seleccionarse 4 libros de 10 y colocarlos en una repisa?",
+          "respuesta": 5040,
+          "pistas": [
+            "Primero estás seleccionando cuáles cuatro libros participan.",
+            "Luego importa el orden en que quedan colocados."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar",
+            "casillas"
+          ],
+          "explicacion": "Se puede elegir y ordenar directamente: 10 × 9 × 8 × 7 = 5040."
+        }
+      ]
+    },
+    {
+      "numero": "27",
+      "parte": "G",
+      "titulo": "Camino en grilla",
+      "enunciado": "Una persona debe recorrer un camino mínimo realizando 5 movimientos hacia la derecha y 3 hacia arriba. ¿Cuántos caminos diferentes puede realizar?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos caminos diferentes puede realizar?",
+          "respuesta": 56,
+          "pistas": [
+            "Todos los caminos tienen las mismas 8 posiciones de movimiento.",
+            "La pregunta es en qué posiciones colocás los movimientos hacia arriba."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Hay 8 movimientos en total y se deben elegir las 3 posiciones que ocuparán los movimientos hacia arriba: C(8,3) = 56."
+        }
+      ]
+    },
+    {
+      "numero": "28",
+      "parte": "G",
+      "titulo": "Cadenas binarias",
+      "enunciado": "¿Cuántas cadenas binarias de longitud 7 tienen exactamente 3 unos?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántas cadenas binarias de longitud 7 tienen exactamente 3 unos?",
+          "respuesta": 35,
+          "pistas": [
+            "No necesitás ordenar todos los símbolos desde cero.",
+            "Elegí primero las posiciones que ocuparán los tres unos; las restantes quedan determinadas."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "combinar"
+          ],
+          "explicacion": "Hay que elegir 3 de las 7 posiciones para colocar los unos: C(7,3) = 35."
+        }
+      ]
+    },
+    {
+      "numero": "29",
+      "parte": "G",
+      "titulo": "Restricción por complemento",
+      "enunciado": "¿Cuántos códigos de 5 dígitos se pueden formar con 0, 1, 2, 3 y 4 si se permite repetir, pero el código debe contener al menos un 0?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos códigos de 5 dígitos contienen al menos un 0?",
+          "respuesta": 2101,
+          "pistas": [
+            "‘Al menos un 0’ puede resolverse más fácilmente contando todos los códigos y restando los que no contienen ningún 0."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 5⁵ códigos en total. Sin ningún 0 hay 4⁵. Entonces 5⁵ − 4⁵ = 3125 − 1024 = 2101."
+        }
+      ]
+    },
+    {
+      "numero": "30",
+      "parte": "G",
+      "titulo": "Mixto - estrategia",
+      "enunciado": "Con las letras A, B, C, D, E y F se forman códigos de 4 letras sin repetir. ¿Cuántos contienen A pero no comienzan con A?",
+      "items": [
+        {
+          "id": "a",
+          "pregunta": "¿Cuántos códigos contienen A pero no comienzan con A?",
+          "respuesta": 180,
+          "pistas": [
+            "Una estrategia posible es contar todos los códigos que contienen A y restar los que además comienzan con A.",
+            "Otra es fijar la posición de A y separar casos."
+          ],
+          "errores_comunes": [],
+          "herramientas_sugeridas": [
+            "casillas"
+          ],
+          "explicacion": "Hay 360 códigos de 4 letras sin repetir. Los que no contienen A son 5 × 4 × 3 × 2 = 120. Entonces contienen A: 360 − 120 = 240. Los que comienzan con A son 5 × 4 × 3 = 60. Por lo tanto, contienen A pero no comienzan con A: 240 − 60 = 180."
+        }
+      ]
+    }
+  ]
+}
